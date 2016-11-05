@@ -28,13 +28,15 @@ gem 'net-ssh-session'
 gem 'sidekiq'
 gem 'sinatra', :require => false
 
+# Use Capistrano for deployment
+# gem 'capistrano-rails', group: :development
+group :production do
+  gem 'puma'
+end
+group :development, :test do
 # Use Unicorn as the app server
 gem 'unicorn'
 gem "unicorn-rails"
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   # Access an IRB console on exception pages or by using <%= console %> in views

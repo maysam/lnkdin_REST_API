@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 	namespace :api do
 		namespace :v1 do
+                  get '/priority', to: 'api#priority'
 			get '/generate', to: 'api#generate'
 			post '/generate', to: 'api#generate'
 			post '/update', to: 'api#update'

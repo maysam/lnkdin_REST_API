@@ -9,7 +9,7 @@ class Api::V1::ApiController < ApplicationController
     if top
       render text: top.link
     else
-      render nil
+      render text: ''
     end
   end
 
@@ -28,10 +28,15 @@ class Api::V1::ApiController < ApplicationController
   end
 
   def update
-    @logic=Logic.new
-    execute_logic JSON.parse params[:json].to_s.force_encoding("ISO-8859-1").encode("UTF-8")
-    @profile.update_attribute :json, @logic.json.to_json
-    render json: @logic.json
+    if params[:json] === 'invalid'
+      @profile.update_attribute :json, 'invalid'
+      head :ok
+    else
+      @logic=Logic.new
+      execute_logic JSON.parse params[:json].to_s.force_encoding("ISO-8859-1").encode("UTF-8")
+      @profile.update_attribute :json, @logic.json.to_json
+      render json: @logic.json
+    end
   end
 
 private
@@ -67,7 +72,7 @@ private
     @logic.summary_score
     @logic.summary_contact_score
     @logic.linkedin_url_score
-    @logic.number_of_connections_score
+    @logic.number_of_connections_score if @logic.json["number_of_connections"]
     @logic.skills_score
     @logic.groups_score
     @logic.organizations_score

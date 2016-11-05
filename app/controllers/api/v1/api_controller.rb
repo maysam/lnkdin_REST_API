@@ -1,38 +1,49 @@
 class Api::V1::ApiController < ApplicationController
-	
+
+	before_action :set_profile
+
+	attr_accessor :profile
 
 	def generate
-		if params[:link][/linkedin.com\/in\/.*/]
-			@profile=Profile.find_or_create_by(link:params[:link])
-			priority = params[:priority].nil? ? 1 : params[:priority]
-			unless @profile.json
-				PriorityQueue.instance << Element.new(params[:link], priority)
-			end
-			until @profile.json
-				sleep 1
-				@profile.reload
-			end
-			render_response(JSON.parse(@profile.json))
-			@profile.update_attribute( :json, nil )
-		else
-			render json: {"error" => "Link is incorrectt"}
+		priority = params[:priority].nil? ? 1 : params[:priority]
+# Commented for normal work of dummy API. Uncomment when need to turn on this part
+		if @profile.json.nil?
+			PriorityQueue.instance << Element.new(params[:link], priority)
 		end
-	end	
-	
+		until !@profile.json.nil?
+			 @profile.json
+			sleep 1
+			@profile.reload
+		end
+		render_response
+	end
+
 	def update
 		@logic=Logic.new
-		execute_logic( JSON.parse(params[:json]) )
-		Profile.find_by(link: params[:link].strip)
-			.update_attribute(:json,@logic.json.to_json)
-		render :text => "done"
+		execute_logic JSON.parse params[:json].to_s.force_encoding("ISO-8859-1").encode("UTF-8")
+		@profile.update_attribute :json, @logic.json.to_json
+		render json: @logic.json
 	end
+
 private
-	
-	def render_response(json)
-		if params[:result_only]=='true'		
-			render json: JSON.pretty_generate(json["result"])
-		else	
-			render json: JSON.pretty_generate(json)
+
+	def set_profile
+		if params[:link][/linkedin.com\/in\/.*/]
+	  		@profile=Profile.find_or_create_by(link:params[:link].strip)
+		else
+			render json: {"error" => "Link is incorrect"}
+		end
+	end
+
+	def render_response
+		# data=File.read("#{Rails.root}/test.json")
+		if params[:result_only]
+			render json: JSON.parse(@profile.json)["result"]
+		else
+			render json: JSON.pretty_generate(
+				JSON.parse(@profile.json)
+				# JSON.parse(data)
+			)
 		end
 	end
 
@@ -41,6 +52,8 @@ private
 		@logic.picture
 		@logic.first_name
 		@logic.last_name
+		# @logic.location
+		# @logic.industry
 		@logic.title_score
 		@logic.summary_score
 		@logic.summary_contact_score
@@ -62,6 +75,4 @@ private
 		@logic.benchmark
 		@logic.generate
 	end
-
-
 end

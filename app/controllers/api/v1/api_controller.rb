@@ -5,7 +5,7 @@ class Api::V1::ApiController < ApplicationController
   attr_accessor :profile
 
   def priority
-    top = Profile.where(json: nil).first # .order(priority: :asc).first
+    top = Profile.where(json: nil).order(:priority).first
     if top
       render text: top.link
     else
@@ -28,8 +28,8 @@ class Api::V1::ApiController < ApplicationController
   end
 
   def update
-    if params[:json] === 'invalid'
-      @profile.update_attribute :json, 'invalid'
+    if params[:json] === {result: 'invalid'}.to_json
+      @profile.update_attribute :json, params[:json]
       head :ok
     else
       @logic=Logic.new
@@ -44,20 +44,19 @@ private
   def set_profile
     if params[:link][/linkedin.com\/in\/.*/]
         @profile=Profile.find_or_create_by(link:params[:link].strip)
+        if @profile.new_record?
+          @profile.priority = params[:priority]
+        end
     else
       render json: {"error" => "Link is incorrect"}
     end
   end
 
   def render_response
-    # data=File.read("#{Rails.root}/test.json")
     if params[:result_only]
       render json: JSON.parse(@profile.json)["result"]
     else
-      render json: JSON.pretty_generate(
-        JSON.parse(@profile.json)
-        # JSON.parse(data)
-      )
+      render json: JSON.pretty_generate(JSON.parse(@profile.json))
     end
   end
 

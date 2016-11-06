@@ -22,41 +22,41 @@ class Logic
 
 	def title_score
 		values=[]
-	  values=if @json["title"]  
+	  values=if @json["title"]
 	  	case @json["title"].length
-				when 71..80 
+				when 71..80
 					['90','Format and length of your tagline are close to optimal.','Length looking good, validate the content.']
-				when 61..70 
+				when 61..70
 					['80','Format and length of your tagline can be optimized.','Try to optimize length and content of the headline.']
-				when 51..60 
+				when 51..60
 					['70','Format and length of your tagline should be optimized.','Try to optimize length and content of the headline.']
-				when 41..50 
+				when 41..50
 					['60','Format and length of your tagline can be improved.','Try to optimize length and content of the headline.']
-				when 31..40 
+				when 31..40
 					['50','Format and length of your tagline should be improved.','Try to optimize length and content of the headline.']
-				when 21..30 
-					['40','Format and length of your tagline should be improved.','Try to optimize length and content of the headline.']	
-				when 11..20 
+				when 21..30
+					['40','Format and length of your tagline should be improved.','Try to optimize length and content of the headline.']
+				when 11..20
 					['10','Format and length of your tagline needs improvement.','Try to optimize length and content of the headline.']
-				when 0..10 
-					['0','Format and length of your tagline needs improvement.','Try to optimize length and content of the headline.']  
+				when 0..10
+					['0','Format and length of your tagline needs improvement.','Try to optimize length and content of the headline.']
 				else
 					['100','Format and length of your tagline are optimal.','Length looking good, validate the content.']
 			end
 		else
-					['100','Format and length of your tagline are optimal.','Length looking good, validate the content.']			
-		end 
+					['100','Format and length of your tagline are optimal.','Length looking good, validate the content.']
+		end
 		add_tag(__method__,values, @json["title"].length)
 	end
-	 
+
 	def summary_score
-		values=[]  
+		values=[]
 		values=if @json["summary"]
 				case @json["summary"].length
-					when 1250..1350 
+					when 1250..1350
 						['10','Format and length of your profile summary section must be improved.','The length of the current summary seems too long (we count between 1250..1350 characters while 650..899 wold be optimal). Please summarize the key message of the profile and bring them in a logical order.']
 
-					when 1150..1249 
+					when 1150..1249
 						['20','Format and length of your profile summary section needs to be improved.','The length of the current summary seems too long (we count between 1150..1249  characters while 650..899 wold be optimal). Please summarize the key messages of the profile and bring them in a logical order.']
 
 					when 1050..1149
@@ -65,7 +65,7 @@ class Logic
 					when 900..1049
 						['80','Format and length of your profile summary section is close to optimal.','The length of the current summary seems to be on the upper end (we count between 900..1049  characters while 650..899 wold be optimal). Please summarize the key messages of the profile and bring them in a logical order.']
 
-					when 650..899 
+					when 650..899
 						['100','Format and length of your profile summary section is optimal.','The length of the current summary seems to be perfect (we count between 650..899 characters which is optimal). Please ensure that the content summarize the key messages of the profile and bring them in a logical order.']
 
 					when 500..649
@@ -74,19 +74,19 @@ class Logic
 					when 400..499
 						['50','Format and length of your profile summary section can be improved.','The length of the current summary seems to be too low (we count between 400..499 characters while 650..899 wold be optimal). Please review the key messages of the profile, increase the length and bring them in a logical order.']
 
-					when 300..399 
+					when 300..399
 						['20','Format and length of your profile summary section needs to be improved.','The length of the current summary seems to be too low (we count between 300..399 characters while 650..899 wold be optimal). Please review the key messages of the profile, increase the length and bring them in a logical order.']
 
-					when 200..299 
+					when 200..299
 						['10','Format and length of your profile summary section must be improved.','The length of the current summary seems to be too low (we count between 200..299 characters while 650..899 wold be optimal). Please review the key messages of the profile, increase the length and bring them in a logical order.']
 
 					else
 						['0',' Format and length of your profile summary section must be improved','The length of the current summary seems to be very low or very high (A summary of between 650..899 characters wold be optimal). Please review the key messages of the profile, increase or decrease the length and bring them in a logical order.']
 				end
 			else
-				['0',' Format and length of your profile summary section must be improved','The length of the current summary seems to be very low or very high (A summary of between 650..899 characters wold be optimal). Please review the key messages of the profile, increase or decrease the length and bring them in a logical order.']	
-			end			
-		add_tag(__method__,values)		
+				['0',' Format and length of your profile summary section must be improved','The length of the current summary seems to be very low or very high (A summary of between 650..899 characters wold be optimal). Please review the key messages of the profile, increase or decrease the length and bring them in a logical order.']
+			end
+		add_tag(__method__,values)
 	end
 
 	def summary_contact_score
@@ -95,8 +95,8 @@ class Logic
 			['100','Contratulations, your summary contains your contact details allowing recruiters to directly contact you.','No action required.']
 			else
 			['0','Your summary is lacking on further contact details.','Include the candidates email address at the end of the summary together with a call for action.']
-		end 
-		add_tag(__method__,values, @json["summary"]=~/([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+/i)	
+		end
+		add_tag(__method__,values, @json["summary"]=~/([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+/i)
 	end
 
 	def linkedin_url_score
@@ -106,8 +106,8 @@ class Logic
 				['0','The URL of your linkedin profile link is not personalized making it difficult for people to find you via search engines.','No action required.']
 			else
 				['100','Your LinkedIn profile URL is personalized making it easy for people to find you via search engines.','No action required.']
-			end 
-		add_tag(__method__,values,Regexp.last_match(2))	
+			end
+		add_tag(__method__,values,Regexp.last_match(2))
 	end
 
 	def number_of_connections_score
@@ -128,10 +128,10 @@ class Logic
 			when 0..99
 				['0','The number of connections of your profile is very weak. It is important that you reach 500+ connectins as this will clearly underline your expertise. Exceptional professionals are known by many people.','No action required.']
 
-			else 
+			else
 				['100','Your profile clearly shows a well connected professional. Keep adding and maintaining connections.','No action required.']
-		end	
-		add_tag(__method__,values, @json["number_of_connections"][/\d+/].to_i)		
+		end
+		add_tag(__method__,values, @json["number_of_connections"][/\d+/].to_i)
 	end
 
 	def skills_score
@@ -152,10 +152,10 @@ class Logic
 		when 0
 			['0','Your shown skillset is very weak. You can substancially increase the impact of your profile by start adding relevant skills and seek skill endorsements, especially from other professionals with strong profiles.','No action required.']
 
-		else 
+		else
 			['100','Your profile clearly shows a skilled professional. Keep seeking endorsements for your skills, especially from other professionals with strong profiles.','No action required.']
-		end	
-		add_tag(__method__,values,@json["skills"].count)		
+		end
+		add_tag(__method__,values,@json["skills"].count)
 	end
 
 	def picture
@@ -170,6 +170,14 @@ class Logic
 	  result['last_name'] = @json['last_name'] ? @json['last_name'] : nil
 	end
 
+	def location
+	  result['location'] = @json['country'] ? @json['country'] : nil
+	end
+
+	def industry
+	  result['industry'] = @json['industry'] ? @json['industry'] : nil
+	end
+
 	def groups_score
 		values=[]
 		values=case @json["groups"].count
@@ -182,7 +190,7 @@ class Logic
 			when 0
 				['0','Active participation in relevant groups is key to underline your subject matter expertise. Your group participation is weak. Start now connecting to relevant gourps that you actively participate.','No action required.']
 
-			else 
+			else
 				['100','Active participation in relevant groups is key to underline your subject matter expertise. Your profile clearly shows that you are well connected. Increase your participation in those groups.','No action required.']
 		end
 		add_tag(__method__,values,@json["groups"].count)
@@ -197,7 +205,7 @@ class Logic
 			when 0
 				['0','Active participation in relevant organizations is key to underline your interest outside of work and ability to run the extra mile. You profile is weak in that respect.','No action required.']
 
-			else 
+			else
 				['100','Active participation in relevant organizations is key to underline your interest outside of work and ability to run the extra mile. Your profile clearly shows active participation.','No action required.']
 		end
 		add_tag(__method__,values,@json["organizations"].count)
@@ -224,10 +232,10 @@ class Logic
 				when 0..9
 					['0','Format and length of your job position taglines is weak and must be impoved.','The length of the position title inside the current and past employers seem to be very low (we count 0-9 characters and the optimum is 50 and above characters). Please check the content and structure and optimize if required. Increase the title length of all position titles to 50 characters if possible.']
 
-				else 
+				else
 	 				['100','Congratulations, the format and length of your job position taglines are optimal.','The length of the position title inside the current and past employers seem to be optimal (50 and above characters). Please check the content and structure and optimize if required without reducing the length.']
 			end
-		end	
+		end
 		add_tag(__method__,values,checking_value)
 	end
 
@@ -264,10 +272,10 @@ class Logic
 				when 200..299
 					['10','Format and length of your job position descriptions must be improved.','The average length of the position descriptions inside the current and past employers are too low (we count 200-300 characters and the optimum is between 650-899 characters). Please summarize the key achivements and resposibilities in a lean and structured way using bullet points like ►or ●. Increase the length of all descriptions close to 650 characters.']
 
-				else 
+				else
 					['0','Format and length of your job position descriptions is weak and must be improved.','The average length of the position descriptions inside the current and past employers are either much too low or much to high (the optimum number of characters are between 650-899). Please summarize the key achivements and resposibilities in a lean and structured way using bullet points like ►or ●. Increase or decrease the length of all descriptions close to 650 characters.']
-			end	
-		end	
+			end
+		end
 		add_tag(__method__,values,checking_value)
 	end
 
@@ -278,7 +286,7 @@ class Logic
   	unless @all_companies.count==0
   		checking_value=bullet_points/@all_companies.count
 			values=case checking_value
-				when 8..10 
+				when 8..10
 					['50', 'The number of bullet points used in your job position descriptions are too high and should be reduced for the benefit of short and targeted key messages.', 'We count that the average number of bullet points used in the job position descriptions are high. Ensure that the candidate has at least 4-7 bullet points clearly stating his achivements and responsibilities per position. Most impressive achivements first. Use the same bullet points in all descriptions (either ► or ●)']
 
 				when 4..7
@@ -291,18 +299,18 @@ class Logic
 					['0', 'To use bullet points to list your achievements and responsibilitieswithin a job position description is best practise and you should start takeing advantage of this.', "The position descriptions of this candidate doesn't seem to use bullet points. Help the candidate with some structure and ensure that the candidate has at least 4-7 bullet points clearly stating his achivements and responsibilities per position. Most impressive achivements first. Use the same bullet points in all descriptions (either ► or ●)"]
 
 				else
-					['0', 'The number of bullet points used in you job position descriptions are very high and must be reduced. More is less for the benefit of short and targeted messages.', 'We count that the average number of bullet points used in the job position descriptions are very high. Ensure that the candidate has a maxiumum of 4-7 bullet points clearly stating his achivements and responsibilities per position. Most impressive achivements first. Use the same bullet points in all descriptions (either ► or ●)']	
+					['0', 'The number of bullet points used in you job position descriptions are very high and must be reduced. More is less for the benefit of short and targeted messages.', 'We count that the average number of bullet points used in the job position descriptions are very high. Ensure that the candidate has a maxiumum of 4-7 bullet points clearly stating his achivements and responsibilities per position. Most impressive achivements first. Use the same bullet points in all descriptions (either ► or ●)']
 			end
-		end	
+		end
 		add_tag(__method__,values, checking_value)
 	end
 
 	def grammar_score
 		# Description
 			# Iterate through the profile 'title', 'summary' and all position 'title' and 'description' tags and append every text in one single string.
-			# Then call up the /stats webservice of the following API in order to get back 
-			# a XML structure containing the statistics: http://www.afterthedeadline.com/api.slp. 
-			# Count the number of instances where the <type> tag contains 'grammar' OR 'spell'. 
+			# Then call up the /stats webservice of the following API in order to get back
+			# a XML structure containing the statistics: http://www.afterthedeadline.com/api.slp.
+			# Count the number of instances where the <type> tag contains 'grammar' OR 'spell'.
 			# Ignor the rest of the values and tags.  Set the new tag 'language_errors_score' accordingly:
 		values=[]
 		specific_mistakes=get_all_gram_mistakes
@@ -315,14 +323,14 @@ class Logic
 			when 0
 				['100', 'Congratulations, there are no grammar or spelling mistakes in your profile. A great impression is guaranteed.', 'No action required.']
 			else
-				['30', 'Many grammar and spelling mistakes have been identifed in your profile.', 'Many grammar and spelling mistakes have been identifed in the profile. Please let a word spell-check run throught the summary text, any profile titles and any profile descriptions. 0 grammar and spelling mistakes is a must.']	
-		end	
+				['30', 'Many grammar and spelling mistakes have been identifed in your profile.', 'Many grammar and spelling mistakes have been identifed in the profile. Please let a word spell-check run throught the summary text, any profile titles and any profile descriptions. 0 grammar and spelling mistakes is a must.']
+		end
 		add_tag(__method__,values,"Number of grammar and spelling mistakes #{specific_mistakes}")
 	end
 
 	def passive_language_score
 		# Description
-			# Same call as above but now count the number of instances where the <type> tag contains 'style' AND the <key> tag 
+			# Same call as above but now count the number of instances where the <type> tag contains 'style' AND the <key> tag
 			# contains 'passive voice'. Ignor the rest of the values and tags. Set the new tag 'passive_language_score' accordingly:
 		values=[]
 		specific_mistakes=get_all_style_and_pass_mistakes
@@ -338,21 +346,21 @@ class Logic
 
 			else
 				['30', 'Many passive language instances has been identifed in your profile. Remember, your profile is a sales tool—and you’re the product. You can increase the impact of your profile by using active language.', 'Over 15 instances of passive language has been identifed in the candidates profile. Please review the summary text, any profile titles and any profile descriptions and turn passive language into active language e.g. in a achivement bullet point ""...sales increased by 15%"" is passive language and you should use strong action words and active languate like ""Increased sales by 15%"".']
-		end	
+		end
 		add_tag(__method__,values,"Number of style or passive voice mistakes #{specific_mistakes}")
 	end
 
 	def action_score
 		# Description
 			# Iterate through all profile 'description' tags and create a list per description of the first word used
-			# after a bullet point. List of special characters that can be identified as bullet point: ★ ✪ ✯ ✰☛ ☝ ☞ ☟ ⇨ ► ◄ » ■ ♦ ◆ ●✔ ✘ ☐ ☑ ☒ - > < 
+			# after a bullet point. List of special characters that can be identified as bullet point: ★ ✪ ✯ ✰☛ ☝ ☞ ☟ ⇨ ► ◄ » ■ ♦ ◆ ●✔ ✘ ☐ ☑ ☒ - > <
 			# Set the new tag 'action_score' accordingly:
 
-			# Example: 
-			# ► Increased sales revenues by 12% within 8 months.  
-			# -Designed the target operating model of the OTC derivative trading business. 
-			# ⇨    Coordinated shirt supplieers and decreased average purchase costs by 4%     
-			# ★ ★ ★  Achivements ★ ★ ★ 
+			# Example:
+			# ► Increased sales revenues by 12% within 8 months.
+			# -Designed the target operating model of the OTC derivative trading business.
+			# ⇨    Coordinated shirt supplieers and decreased average purchase costs by 4%
+			# ★ ★ ★  Achivements ★ ★ ★
 
 			# Result list from current job position: ['Increased', 'Designed', 'Coordinated', '★', '★', 'Achivements', '★', '★']
 			# Results from e.g. a job position in past: ['Decreased','Management','The','A','Increased','-','*','The']
@@ -360,7 +368,7 @@ class Logic
 			# Calculation of the average number of action words used in the job descriptions:
 			# Take the first list and count the number of instances in which a word from belwo ACTION WORD LIST is part of the list.
 			# Do this for all lists and at the end sum up all numbers and devide into the number of lists.
-			# The result will be the average amount of action words used across all job descriptions. 
+			# The result will be the average amount of action words used across all job descriptions.
 			# If we only would have the 2 lists from the example above then the result would be as follows:
 
 			# List 1: 3
@@ -377,31 +385,31 @@ class Logic
 	  @description_list.each do |description|
 	  	 words_after_bp=get_first_words_after_bullet_points(description)
 	  	 words_amount+= words_after_bp.select{|word| action_word_list.include?(word)}.length.to_i
-	  end	
+	  end
 
 	  ratio=@description_list.length!=0 ? (words_amount/@description_list.length).to_f : nil
-	  
+
 	  if ratio
 		  values=case ratio
 		  	when 1..3
-					['20', 'Recruiters recommended starting your bullets with strong action-oriented words.Most used action-verbs across High Scoring Profiles Led/Managed/Analyzed/Created. As this is a best practise and powerful tool you should increase using it in a consistent way across your positions.', 'The candidates profile shows some achivement bullet points that start with a strong action word. Reveiw and increase the number in every position description and ensure that 4-7 bullet points do highlight the key achivements and that the FIRST word used in each achivement bullet point is a strong action word such as %s'] 
+					['20', 'Recruiters recommended starting your bullets with strong action-oriented words.Most used action-verbs across High Scoring Profiles Led/Managed/Analyzed/Created. As this is a best practise and powerful tool you should increase using it in a consistent way across your positions.', 'The candidates profile shows some achivement bullet points that start with a strong action word. Reveiw and increase the number in every position description and ensure that 4-7 bullet points do highlight the key achivements and that the FIRST word used in each achivement bullet point is a strong action word such as %s']
 					# -> please include the content of ACTION_WORD_LIST inside the placeholder %s
-			
+
 				when 0
 					['0', "Recruiters recommended starting your bullets with strong action-oriented words. Most used action-verbs across High Scoring Profiles Led/Managed/Analyzed/Created. Your profile doesn't contain any action words in bullets. As this is a best practise and powerful tool you should increase using it in a consistent way across your positions.', 'The candidates profile either doesnt contain any bullet points to underline achivements OR the action words used within the bullet points are weak. Ensure that every position description contains 4-7 bullet points highlighting the key achivements and that the FIRST word used in each achivement bullet point is a strong action word such as INCREASED, MANAGED, CREATED, COORDINATED, DECREASED, DESIGNED, SUBMITTED, WROTE, DOCUMENTED ....."]
 						# -> please include the content of ACTION_WORD_LIST inside the placeholder %s
 
 				else
 					['100', 'Congratulations, recruiters recommended starting your bullets with strong action-oriented words. Your profile follows that best practise and will be recognized as impactfull.', 'The candidates profile show position descriptions that contain bullets starting with strong action words such as  %s Ensure that this is done in a consistant way and that every position description contains 4-7 bullet points highlighting the key achivements and that the FIRST word used in each achivement bullet point is a strong action word']
-			end		
-		end	
+			end
+		end
 
 		add_tag(__method__,values,"Average number of action words used: #{ratio}. Total amount of action words #{words_amount} in description tags")
 	end
-		
+
 	def specifics_score
 		#Description
-			# Iterate through all profile 'description' tags and count per description the number of times the below stated SPECIFICS 
+			# Iterate through all profile 'description' tags and count per description the number of times the below stated SPECIFICS
 			# characters are used. After that sum up all numbers and devide into the number of descriptions to get the average number of used SPECIFICS.
 			# Set the new tag 'specifics_score' accordingly:
 			# SPECIFICS_WORD_LIST = ['%','$','USD','SGD','AUD','euro']
@@ -420,14 +428,14 @@ class Logic
 
 				else
 					['100', 'Congratulations, you belong to the >70% of High Scoring Profiles that show scope of responsibilities with quantified impact.', 'It seems that the profile quantifies achivement bullet points more than average. Review the achivement bullet points and ensure that quantifications are done properly and in a consistant manner across all job descriptions. E.g. Managed to decrease project costs by 15% or Increased sales volume by 13% within 6 months']
-			end	
-		end	
+			end
+		end
 		add_tag(__method__,values,checking_value)
 	end
 
 	def avoided_words_score
 		# Description
-			# Iterate through the 'title', 'summary' and all profile 'description' tags and count the number of times the below 
+			# Iterate through the 'title', 'summary' and all profile 'description' tags and count the number of times the below
 			# stated AVOIDED_WORDS words are used. Set the new tag 'avoided_words_score' accordingly:
 
 			# AVOIDED_WORDS = ['just','so','very','realy','and then','but','literally','quite','perhaps','in order','actually','rather','stuff']
@@ -454,25 +462,25 @@ class Logic
 	end
 
 	def profile_word_cloud
-		# Description 
-			# This rule does not flow into the overall score. The purpose of this rule is to bild up a big string of sentences/words 
-			# and to discpay that as a wordcloud. There are some wordpress wordcloud plugins that i will be able to use. 
-			# What i would need is a big string. You  can just include this new 'profile_word_cloud' tag inside the JSON structure. 
-			# Below rule describes the way how to bild this string. 
+		# Description
+			# This rule does not flow into the overall score. The purpose of this rule is to bild up a big string of sentences/words
+			# and to discpay that as a wordcloud. There are some wordpress wordcloud plugins that i will be able to use.
+			# What i would need is a big string. You  can just include this new 'profile_word_cloud' tag inside the JSON structure.
+			# Below rule describes the way how to bild this string.
 
 
-			# Iterate through below sections and merge all the text to 1 large string and then search and exclude the EXCLUDED_WORDS 
-			# out of the string. The content of some sections are more important than other sections hence you can replicate the words 
-			# per section as per below multiplication formula. The Profile Title is most important hence the multiplicator 5. 
+			# Iterate through below sections and merge all the text to 1 large string and then search and exclude the EXCLUDED_WORDS
+			# out of the string. The content of some sections are more important than other sections hence you can replicate the words
+			# per section as per below multiplication formula. The Profile Title is most important hence the multiplicator 5.
 
 			# Example of a profile title: ""Senior Project Manager | OTC derivative trading regulatory change | FinReg | Business Transformation""
-			# Result string: ""Senior Project Manager | OTC derivative trading regulatory change | FinReg | Business Transformation 
-			# Senior Project Manager | OTC derivative trading regulatory change | FinReg | Business Transformation 
-			# Senior Project Manager | OTC derivative trading regulatory change | FinReg | Business Transformation 
-			# Senior Project Manager | OTC derivative trading regulatory change | FinReg | Business Transformation 
-			# Senior Project Manager | OTC derivative trading regulatory change | FinReg | Business Transformation"" 
+			# Result string: ""Senior Project Manager | OTC derivative trading regulatory change | FinReg | Business Transformation
+			# Senior Project Manager | OTC derivative trading regulatory change | FinReg | Business Transformation
+			# Senior Project Manager | OTC derivative trading regulatory change | FinReg | Business Transformation
+			# Senior Project Manager | OTC derivative trading regulatory change | FinReg | Business Transformation
+			# Senior Project Manager | OTC derivative trading regulatory change | FinReg | Business Transformation""
 
-			# Sections: 
+			# Sections:
 			# 5 x Profile Title
 			# 3 x Profile Summary
 			# 5 x Country
@@ -480,7 +488,7 @@ class Logic
 			# 4 x Current_companies.Description title
 			# 3 x Current_companies.Description
 			# 1 x Past_companies.Description title
-			# 1 x Past_companies.Description 
+			# 1 x Past_companies.Description
 
 			# EXCLUDED_WORDS=['the','a','an','on','from','for','why','as','at','by','but','for','off','|','?','!','*'] - The list is not complete yet and i'll complete that inside the code at a later stage.
 			excluded_words=['the','a','an','on','from','for','why','as','at','by','but','for','off','\|','\?','\!','\*','►']
@@ -496,7 +504,7 @@ class Logic
 			cur_title=current_companies_title*4
 			big_string="#{title} #{summary} #{country} #{skills} #{cur_descriptions} #{cur_title} #{past_companies_title} #{past_companies_description}"
 			excluded_words.each {|word| big_string=big_string.gsub(Regexp.new('\s'+word+'\s'), ' ')}
-			result[__method__]=big_string				
+			result[__method__]=big_string
 	end
 
 	def generate
@@ -504,11 +512,11 @@ class Logic
 	end
 
 	def grade
-		# Description 
-			# 1.) For all rules in the ""Format"" section (see colum 'B'): 
+		# Description
+			# 1.) For all rules in the ""Format"" section (see colum 'B'):
 			# Multiply every score with its weight (see colum 'G') and build the sum
 			# and devide into the number of rules to get the average score.
-			# 2.) For all rules in the ""Content"" section: Multiply every score with its weight 
+			# 2.) For all rules in the ""Content"" section: Multiply every score with its weight
 			# and build the sum and devide into the number of rules to get the average score.
 			# 3.) Build total score: ((40*Format section score)+(60*Content section score))/100
 		weight={
@@ -531,7 +539,7 @@ class Logic
 				:action_score => "20",
 				:specifics_score => "15",
 				:avoided_words_score => "30"
-			}	
+			}
 		}
 		values=[]
 		format_section_score=weight[:format].map{|k,v| @result[k][:score].to_i*v.to_i}.inject(:+)/100 #weight[:format].size
@@ -578,7 +586,7 @@ class Logic
 
 			# 	result = 1 - 0.71186 = 28.8%   -> This means that 28.8% of other candidates score higher than the score of our candidate (75)
 
-			# -> Please replace the #{result} with the calculation result: 
+			# -> Please replace the #{result} with the calculation result:
 		std=17
 		mean=65.5
 		values=[]
@@ -607,16 +615,16 @@ class Logic
 				[result,"More than #{result} of other candidates scored higher than you."]
 		end
 
-		add_tag(__method__,values,result)	
+		add_tag(__method__,values,result)
 	end
 
 private
 
 	def add_tag(tag_name,values,debug='')
 		result[tag_name]={score:"",u_text:"",w_text:""}
-		result[tag_name].each_with_index{|h,i| result[tag_name][h[0]]=values[i]} 	
+		result[tag_name].each_with_index{|h,i| result[tag_name][h[0]]=values[i]}
 		result[tag_name][:debug]=debug
-	end	
+	end
 
 	def get_description_list
 		list=[]
@@ -656,8 +664,8 @@ private
 		begin
 			@mistakes=AfterTheDeadline.metrics whole_profile_content
 		rescue
-			retry	
-		end	
+			retry
+		end
 	end
 
 	def get_all_gram_mistakes

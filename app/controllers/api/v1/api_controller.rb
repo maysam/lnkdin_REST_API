@@ -28,14 +28,18 @@ class Api::V1::ApiController < ApplicationController
   end
 
   def update
-    if params[:json] === {result: 'invalid'}.to_json
-      @profile.update_attribute :json, params[:json]
-      head :ok
+    if params[:json] && params[:json]  != ''
+      if params[:json] === {result: 'invalid'}.to_json
+        @profile.update_attribute :json, params[:json]
+        head :ok
+      else
+        @logic=Logic.new
+        execute_logic JSON.parse params[:json].to_s.force_encoding("ISO-8859-1").encode("UTF-8")
+        @profile.update_attribute :json, @logic.json.to_json
+        render json: @logic.json
+      end
     else
-      @logic=Logic.new
-      execute_logic JSON.parse params[:json].to_s.force_encoding("ISO-8859-1").encode("UTF-8")
-      @profile.update_attribute :json, @logic.json.to_json
-      render json: @logic.json
+      head :bad_request
     end
   end
 
@@ -65,8 +69,8 @@ private
     @logic.picture
     @logic.first_name
     @logic.last_name
-    # @logic.location
-    # @logic.industry
+    @logic.location
+    @logic.industry
     @logic.title_score
     @logic.summary_score
     @logic.summary_contact_score

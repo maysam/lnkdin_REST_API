@@ -25,26 +25,26 @@ class Logic
 	  values=if @json["title"]
 	  	case @json["title"].length
 				when 71..80
-					['90','Format and length of your tagline are close to optimal.','Length looking good, validate the content.']
+					["90","Format and length of your profile tagline are close to optimal and can be further maximized. You furthermore want to include long tail keywords that recruiters would use when searching on linkedin for candidates of new job positions that are of interest to you.","Length looking good, validate the content."]
 				when 61..70
-					['80','Format and length of your tagline can be optimized.','Try to optimize length and content of the headline.']
+					["80","Format and length of your profile tagline can be optimized. You furthermore want to include long tail keywords that recruiters would use when searching on linkedin for candidates of new job positions that are of interest to you.","Try to optimize length and content of the headline."]
 				when 51..60
-					['70','Format and length of your tagline should be optimized.','Try to optimize length and content of the headline.']
+					["70","Format and length of your profile tagline should be optimized. You furthermore want to include long tail keywords that recruiters would use when searching on linkedin for candidates of new job positions that are of interest to you.","Try to optimize length and content of the headline."]
 				when 41..50
-					['60','Format and length of your tagline can be improved.','Try to optimize length and content of the headline.']
+					["60","Format and length of your profile tagline can be improved. You furthermore want to include long tail keywords that recruiters would use when searching on linkedin for candidates of new job positions that are of interest to you.","Try to optimize length and content of the headline."]
 				when 31..40
-					['50','Format and length of your tagline should be improved.','Try to optimize length and content of the headline.']
+					["50","Format and length of your profile tagline should be improved. You furthermore want to include long tail keywords that recruiters would use when searching on linkedin for candidates of new job positions that are of interest to you.","Try to optimize length and content of the headline."]
 				when 21..30
-					['40','Format and length of your tagline should be improved.','Try to optimize length and content of the headline.']
+					["40","Format and length of your profile tagline should be improved. You furthermore want to include long tail keywords that recruiters would use when searching on linkedin for candidates of new job positions that are of interest to you.","Try to optimize length and content of the headline."]
 				when 11..20
-					['10','Format and length of your tagline needs improvement.','Try to optimize length and content of the headline.']
+					["10","Format and length of your profile tagline need improvement. You furthermore want to include long tail keywords that recruiters would use when searching on linkedin for candidates of new job positions that are of interest to you.","Try to optimize length and content of the headline."]
 				when 0..10
-					['0','Format and length of your tagline needs improvement.','Try to optimize length and content of the headline.']
+					["0","Format and length of your profile tagline need improvement. You furthermore want to include long tail keywords that recruiters would use when searching on linkedin for candidates of new job positions that are of interest to you.","Try to optimize length and content of the headline."]
 				else
-					['100','Format and length of your tagline are optimal.','Length looking good, validate the content.']
+					["100","Congratulation, format and length of your profile tagline are optimal and fully utilized. You might want to review the content and make sure that you included the long tail keywords that recruiters would use when searching on linkedin for candidates of new job positions that are of interest to you.","Length looking good, validate the content."]
 			end
 		else
-					['100','Format and length of your tagline are optimal.','Length looking good, validate the content.']
+					["0","Error #1383 occurred. Please note the error code and inform us via contact form. Many thanks for your help and we apologize for the inconvenience caused.","Error #1383 occurred. Please inform us about this error."]
 		end
 		add_tag(__method__,values, @json["title"].length)
 	end
@@ -52,39 +52,46 @@ class Logic
 	def summary_score
 		values=[]
 		values=if @json["summary"]
+		nr_sum_chars = @json["summary"].length
 				case @json["summary"].length
 					when 1250..1350
-						['10','Format and length of your profile summary section must be improved.','The length of the current summary seems too long (we count between 1250..1350 characters while 650..899 wold be optimal). Please summarize the key message of the profile and bring them in a logical order.']
+						["10","Format and length of your profile summary section must be improved. A typical recruiter skips your summary as it is too overwhelming to read. The purpose of this summary is to motivate the reader to read the rest of your profile. Around 700 characters is the sweet spot that you want to aim for - Short enough to be attractive to read and long enough to sell your content. Your summary currently counts #{nr_sum_chars} characters. We would be pleased to write a compelling summary for you. Please check out our offerings at the end of this page.","The length of the current summary seems too long (we count between 1250..1350 characters while 650..899 wold be optimal). Please summarize the key message of the profile and bring them in a logical order."]
 
 					when 1150..1249
-						['20','Format and length of your profile summary section needs to be improved.','The length of the current summary seems too long (we count between 1150..1249  characters while 650..899 wold be optimal). Please summarize the key messages of the profile and bring them in a logical order.']
+						["20","Format and length of your profile summary section needs to be improved. A typical recruiter would skip your summary as it is too overwhelming to read. The purpose of this summary is to motivate the reader to read the rest of your profile. Around 700 characters is the sweet spot that you want to aim for - Short enough to be attractive to read and long enough to sell your content. Your summary currently counts #{nr_sum_chars} characters. We would be pleased to write a compelling summary for you. Please check out our offerings at the end of this page.","The length of the current summary seems too long (we count between 1150..1249  characters while 650..899 wold be optimal). Please summarize the key messages of the profile and bring them in a logical order."]
 
 					when 1050..1149
-						['50','Format and length of your profile summary section can be improved.','The length of the current summary seems too long (we count between 1050..1149  characters while 650..899 wold be optimal). Please summarize the key messages of the profile and bring them in a logical order.']
+						["50","Format and length of your profile summary section can be improved. A typical recruiter is very likely to skip your summary as it is too overwhelming to read. The purpose of this summary is to motivate the reader to read the rest of your profile. Around 700 characters is the sweet spot that you want to aim for - Short enough to be attractive to read and long enough to sell your content. Your summary currently counts #{nr_sum_chars} characters. We would be pleased to write a compelling summary for you. Please check out our offerings at the end of this page.","The length of the current summary seems too long (we count between 1050..1149  characters while 650..899 wold be optimal). Please summarize the key messages of the profile and bring them in a logical order."]
 
 					when 900..1049
-						['80','Format and length of your profile summary section is close to optimal.','The length of the current summary seems to be on the upper end (we count between 900..1049  characters while 650..899 wold be optimal). Please summarize the key messages of the profile and bring them in a logical order.']
+						["80","Format and length of your profile summary section is close to optimal. A typical recruiter might skip your summary as it is too overwhelming to read. The purpose of this summary is to motivate the reader to read the rest of your profile. Around 700 characters is the sweet spot that you want to aim for - Short enough to be attractive to read and long enough to sell your content. Your summary currently counts #{nr_sum_chars} characters. We would be pleased to write a compelling summary for you. Please check out our offerings at the end of this page.","The length of the current summary seems to be on the upper end (we count between 900..1049  characters while 650..899 wold be optimal). Please summarize the key messages of the profile and bring them in a logical order."]
 
 					when 650..899
-						['100','Format and length of your profile summary section is optimal.','The length of the current summary seems to be perfect (we count between 650..899 characters which is optimal). Please ensure that the content summarize the key messages of the profile and bring them in a logical order.']
+						["100","Congratulation, format and length of your profile summary section is optimal. A typical recruiter will assess your summary length as short enough to be attractive to read and long enough to get a clear overview about your profile.","The length of the current summary seems to be perfect (we count between 650..899 characters which is optimal). Please ensure that the content summarize the key messages of the profile and bring them in a logical order."]
 
 					when 500..649
-						['80','Format and length of your profile summary section close to optimal.','The length of the current summary seems to be on the lower end (we count between 500..649 characters while 650..899 wold be optimal). Please review the key messages of the profile, slightliy increase the length and bring them in a logical order.']
+						["80","Format and length of your profile summary section is close to optimal. You might want to increase the content of your summary for another paragraph allowing a typical recruiter to get a clear overview about your profile. The purpose of this summary is to motivate the reader to read the rest of your profile. Around 700 characters is the sweet spot that you want to aim for - Short enough to be attractive to read and long enough to sell your content. Your summary currently counts #{nr_sum_chars} characters. We would be pleased to write a compelling summary for you. Please check out our offerings at the end of this page.","The length of the current summary seems to be on the lower end (we count between 500..649 characters while 650..899 wold be optimal). Please review the key messages of the profile, slightliy increase the length and bring them in a logical order."]
 
 					when 400..499
-						['50','Format and length of your profile summary section can be improved.','The length of the current summary seems to be too low (we count between 400..499 characters while 650..899 wold be optimal). Please review the key messages of the profile, increase the length and bring them in a logical order.']
+						["50","Format and length of your profile summary section can be improved. You want to increase the content of your summary allowing a typical recruiter to get a clear overview about your profile. The purpose of this summary is to motivate the reader to read the rest of your profile. Around 700 characters is the sweet spot that you want to aim for - Short enough to be attractive to read and long enough to sell your content. Your summary currently counts #{nr_sum_chars} characters. We would be pleased to write a compelling summary for you. Please check out our offerings at the end of this page.","The length of the current summary seems to be too low (we count between 400..499 characters while 650..899 wold be optimal). Please review the key messages of the profile, increase the length and bring them in a logical order."]
 
 					when 300..399
-						['20','Format and length of your profile summary section needs to be improved.','The length of the current summary seems to be too low (we count between 300..399 characters while 650..899 wold be optimal). Please review the key messages of the profile, increase the length and bring them in a logical order.']
+						["20","Format and length of your profile summary section needs to be improved. You want to increase the content of your summary allowing a typical recruiter to get a clear overview about your profile. The purpose of this summary is to motivate the reader to read the rest of your profile. Around 700 characters is the sweet spot that you want to aim for - Short enough to be attractive to read and long enough to sell your content. Your summary currently counts #{nr_sum_chars} characters. We would be pleased to write a compelling summary for you. Please check out our offerings at the end of this page.","The length of the current summary seems to be too low (we count between 300..399 characters while 650..899 wold be optimal). Please review the key messages of the profile, increase the length and bring them in a logical order."]
 
 					when 200..299
-						['10','Format and length of your profile summary section must be improved.','The length of the current summary seems to be too low (we count between 200..299 characters while 650..899 wold be optimal). Please review the key messages of the profile, increase the length and bring them in a logical order.']
+						["10","Format and length of your profile summary section must be improved. You want to increase the content of your summary allowing a typical recruiter to get a clear overview about your profile. The purpose of this summary is to motivate the reader to read the rest of your profile. Around 700 characters is the sweet spot that you want to aim for - Short enough to be attractive to read and long enough to sell your content. Your summary currently counts #{nr_sum_chars} characters. We would be pleased to write a compelling summary for you. Please check out our offerings at the end of this page.","The length of the current summary seems to be too low (we count between 200..299 characters while 650..899 wold be optimal). Please review the key messages of the profile, increase the length and bring them in a logical order."]
+
+					when 5..199
+						["5","Format and length of your profile summary section are minimalistic and must be improved. You want to increase the content of your summary allowing a typical recruiter to get a clear overview about your profile. The purpose of this summary is to motivate the reader to read the rest of your profile. Around 700 characters is the sweet spot that you want to aim for - Short enough to be attractive to read and long enough to sell your content. Your summary currently counts #{nr_sum_chars} characters. We would be pleased to write a compelling summary for you. Please check out our offerings at the end of this page.","The length of the current summary seems to be too low (we count between 200..299 characters while 650..899 wold be optimal). Please review the key messages of the profile, increase the length and bring them in a logical order."]
+
+					when 0..5
+						["0","You want to have a summary allowing a typical recruiter to get a clear overview about your profile. The purpose of this summary is to motivate the reader to read the rest of your profile. Around 700 characters is the sweet spot that you want to aim for - Short enough to be attractive to read and long enough to sell your content. Your summary currently counts #{nr_sum_chars} characters. We would be pleased to write a compelling summary for you. Please check out our offerings at the end of this page.","The length of the current summary seems to be too low (we count between 200..299 characters while 650..899 wold be optimal). Please review the key messages of the profile, increase the length and bring them in a logical order."]
 
 					else
-						['0',' Format and length of your profile summary section must be improved','The length of the current summary seems to be very low or very high (A summary of between 650..899 characters wold be optimal). Please review the key messages of the profile, increase or decrease the length and bring them in a logical order.']
+						["0","Format and length of your profile summary section must be improved. A typical recruiter skips your summary as it is too overwhelming to read. The purpose of this summary is to motivate the reader to read the rest of your profile. Around 700 characters is the sweet spot that you want to aim for - Short enough to be attractive to read and long enough to sell your content. Your summary currently counts #{nr_sum_chars} characters. We would be pleased to write a compelling summary for you. Please check out our offerings at the end of this page.","The length of the current summary seems too long (we count between 1250..1350 characters while 650..899 wold be optimal). Please summarize the key message of the profile and bring them in a logical order."]
 				end
 			else
-				['0',' Format and length of your profile summary section must be improved','The length of the current summary seems to be very low or very high (A summary of between 650..899 characters wold be optimal). Please review the key messages of the profile, increase or decrease the length and bring them in a logical order.']
+				["0","Error #1383 occurred. Please note the error code and inform us via contact form. Many thanks for your help and we apologize for the inconvenience caused.","Error #1383 occurred. Please inform us about this error."]
 			end
 		add_tag(__method__,values)
 	end
@@ -112,48 +119,50 @@ class Logic
 
 	def number_of_connections_score
 		values=[]
+		nr_connections = @json["number_of_connections"][/\d+/].to_i
 		values=case @json["number_of_connections"][/\d+/].to_i
 			when 400..499
-				['50','Your profile shows a good connected professional. However it is important that you reach 500+ connectins as this will clearly underline your subject matter expertise.','No action required.']
+				["50","Your profile shows a good connected professional. However, it is important that you increase your reach from #{nr_connections} to 500+ connectins as this will clearly underline your subject matter expertise.","No action required."]
 
 			when 300..399
-				['20','Your profile shows an average number of connections. It is important that you exceed 500 connectins as this will clearly underline your subject matter expertise. Exceptional professionals are known by many people.','No action required.']
+				["20","Your profile shows an average number of connections. It is important that you increase your reach from #{nr_connections} to 500+ connectins as this will clearly underline your subject matter expertise. Exceptional professionals are known by many people and as such the number of connections shown in your profile can be seen as an indicator.","No action required."]
 
 			when 200..299
-				['10','The number of connections of your profile is weak. It is important that you exceed 500 connectins as this will clearly underline your subject matter expertise. Exceptional professionals are known by many people.','No action required.']
+				["10","The number of connections of your profile is weak. It is important that you increase your reach from #{nr_connections} to 500+ connectins as this will clearly underline your subject matter expertise. Exceptional professionals are known by many people and as such the number of connections shown in your profile can be seen as an indicator.","No action required."]
 
 			when 100..199
-				['0','The number of connections of your profile is weak. It is important that you exeed 500 connectins as this will clearly underline your subject matter expertise. Exceptional professionals are known by many people. ','No action required.']
+				["5","The number of connections of your profile is weak. It is important that you increase your reach from #{nr_connections} to 500+ connectins as this will clearly underline your subject matter expertise. Exceptional professionals are known by many people and as such the number of connections shown in your profile can be seen as an indicator.","No action required."]
 
 			when 0..99
-				['0','The number of connections of your profile is very weak. It is important that you reach 500+ connectins as this will clearly underline your expertise. Exceptional professionals are known by many people.','No action required.']
+				["0","The number of connections of your profile is weak. it is important that you increase your reach from #{nr_connections} to 500+ connectins as this will clearly underline your subject matter expertise. Exceptional professionals are known by many people and as such the number of connections shown in your profile can be seen as an indicator.","No action required."]
 
 			else
-				['100','Your profile clearly shows a well connected professional. Keep adding and maintaining connections.','No action required.']
+				["100","Congratulations, your profile clearly shows a recruiter a well connected professional. Keep adding and maintaining connections.","No action required."]
 		end
 		add_tag(__method__,values, @json["number_of_connections"][/\d+/].to_i)
 	end
 
 	def skills_score
 		values=[]
+		nr_of_scills = @json["skills"].count
 		values=case @json["skills"].count
 		when 20..29
-			['80','Your profile shows a skilled professional however you could improve adding more skills. Also keep seeking endorsements for your skills, especially from other professionals with strong profiles.','No action required.']
+			["80","Your profile shows a skilled professional (#{nr_of_scills} listed skilles) however you could improve adding more skills. Also keep seeking endorsements for your skills, especially from other professionals with strong profiles.","No action required."]
 
 		when 10..19
-			['65','Your profile shows some professional skills however you can increase impact by adding more relevant skills. Also seek for more skill endorsements, especially from other professionals with strong profiles.','No action required.']
+			["65","Your profile shows some professional skills (#{nr_of_scills} listed skilles) however you can increase impact by adding more relevant skills. Also seek for more skill endorsements, especially from other professionals with strong profiles.","No action required."]
 
 		when 5..9
-			['40','Your shown skillset is weak. You can substancially increase the impact of your profile by adding more relevant skills. Also seek for more skill endorsements, especially from other professionals with strong profiles.','No action required.']
+			["40","Your shown skillset is weak (#{nr_of_scills} listed skilles). You can substancially increase the impact of your profile by adding more relevant skills. Also seek for more skill endorsements, especially from other professionals with strong profiles.","No action required."]
 
 		when 1..4
-			['0','Your shown skillset is very weak. You can substancially increase the impact of your profile by adding more relevant skills. Also seek for more skill endorsements, especially from other professionals with strong profiles.','No action required.']
+			["20","Your shown skillset is very weak (#{nr_of_scills} listed skilles).  You can substancially increase the impact of your profile by adding more relevant skills. Also seek for more skill endorsements, especially from other professionals with strong profiles.","No action required."]
 
 		when 0
-			['0','Your shown skillset is very weak. You can substancially increase the impact of your profile by start adding relevant skills and seek skill endorsements, especially from other professionals with strong profiles.','No action required.']
+			["0","Your shown skillset is very weak (#{nr_of_scills} listed skilles). You can substancially increase the impact of your profile by start adding relevant skills and seek skill endorsements, especially from other professionals with strong profiles.","No action required."]
 
 		else
-			['100','Your profile clearly shows a skilled professional. Keep seeking endorsements for your skills, especially from other professionals with strong profiles.','No action required.']
+			["100","Contratulation, your profile clearly shows a skilled professional with #{nr_of_scills} listed skilles. Keep seeking endorsements for your skills, especially from other professionals with strong profiles.","No action required."]
 		end
 		add_tag(__method__,values,@json["skills"].count)
 	end
@@ -180,33 +189,35 @@ class Logic
 
 	def groups_score
 		values=[]
+		nr_of_groups=@json["groups"].count
 		values=case @json["groups"].count
 			when 4..6
-				['80','Active participation in relevant groups is key to underline your subject matter expertise. Your profile shows that you are connected to relevant groups. However in order to increase the impact of your profile you should connect to more relevant groups of your profession. Also increase your participation in those groups.','No action required.']
+				["80","Active participation in relevant groups is key to underline your subject matter expertise. Your profile shows that you are connected to #{nr_of_groups} relevant groups. However in order to increase the impact of your profile you should connect to more relevant groups of your profession. Also increase your participation in those groups.","No action required."]
 
 			when 1..3
-				['40','Active participation in relevant groups is key to underline your subject matter expertise. The number of grops that you are connected to is weak. You can substancially increase the impact of your profile by connecting to more and relevant gourps that you actively participate.  ','No action required.']
+				["40","Active participation in relevant groups is key to underline your subject matter expertise. The number of grops that you are connected to is weak (#{nr_of_groups} groups). You can substancially increase the impact of your profile by connecting to more and relevant gourps that you actively participate.  ","No action required."]
 
 			when 0
-				['0','Active participation in relevant groups is key to underline your subject matter expertise. Your group participation is weak. Start now connecting to relevant gourps that you actively participate.','No action required.']
+				["0","Active participation in relevant groups is key to underline your subject matter expertise. Your group participation is weak (#{nr_of_groups} groups). Start now connecting to relevant gourps that you actively participate.","No action required."]
 
 			else
-				['100','Active participation in relevant groups is key to underline your subject matter expertise. Your profile clearly shows that you are well connected. Increase your participation in those groups.','No action required.']
+				["100","Congratulations, you understood that active participation in relevant groups is key to underline your subject matter expertise. Your profile clearly shows that you are well connected (#{nr_of_groups} groups). Keep up your participation in those groups.","No action required."]
 		end
 		add_tag(__method__,values,@json["groups"].count)
 	end
 
 	def organizations_score
 		values=[]
+		nr_of_organ=@json["organizations"].count
 		values=case @json["organizations"].count
 			when 1..2
-				['50','Active participation in relevant organizations is key to underline your interest outside of work and ability to run the extra mile. Your profile shows active participation.','No action required.']
+				["50","Active participation in relevant organizations is key to underline your interest outside of work and ability to run the extra mile. Your profile shows active participation in #{nr_of_organ} organization(s).","No action required."]
 
 			when 0
-				['0','Active participation in relevant organizations is key to underline your interest outside of work and ability to run the extra mile. You profile is weak in that respect.','No action required.']
+				["0","Active participation in relevant organizations is key to underline your interest outside of work and ability to run the extra mile. You profile is weak in that respect. Try to get member in 1-2 organizations to strengthen your overall profile.","No action required."]
 
 			else
-				['100','Active participation in relevant organizations is key to underline your interest outside of work and ability to run the extra mile. Your profile clearly shows active participation.','No action required.']
+				["100","Congratulations, you understood that active participation in relevant organizations is key to underline your interest outside of work and ability to run the extra mile. Your profile clearly shows active participation in #{nr_of_organ} organizations.","No action required."]
 		end
 		add_tag(__method__,values,@json["organizations"].count)
 	end
@@ -218,22 +229,22 @@ class Logic
   		checking_value=@all_companies.map{|a| a["title"]}.join.length/@all_companies.count
 			values=case checking_value
 				when 40..49
-					['80','Format and length of your job position taglines is close to optimal and can be slightly improved.','The length of the position title inside the current and past employers seem to be close to optimal (we count 40-49 characters and the optimum is 50 and above characters). Please check the content and structure and optimize if required. Try to increase the title length of all position titles to 50 characters if possible.']
+					["80","Format and length of your job position taglines is close to optimal and can be slightly improved. You furthermore want to include domain knowledge keywords that you want your profile to show up when recruiters search for such knowledge or skillset.","The length of the position title inside the current and past employers seem to be close to optimal (we count 40-49 characters and the optimum is 50 and above characters). Please check the content and structure and optimize if required. Try to increase the title length of all position titles to 50 characters if possible."]
 
 				when 30..39
-					['60','Format and length of your job position taglines can be impoved.','The length of the position title inside the current and past employers seem to be on the lower end (we count 30-39 characters and the optimum is 50 and above characters). Please check the content and structure and optimize if required. Try to increase the title length of all position titles to 50 characters if possible.']
+					["60","Format and length of your job position taglines can be impoved. You furthermore want to include domain knowledge keywords that you want your profile to show up when recruiters search for such knowledge or skillset.","The length of the position title inside the current and past employers seem to be on the lower end (we count 30-39 characters and the optimum is 50 and above characters). Please check the content and structure and optimize if required. Try to increase the title length of all position titles to 50 characters if possible."]
 
 				when 20..29
-					['40','Format and length of your job position taglines needs to be impoved.','The length of the position title inside the current and past employers seem to be low (we count 20-29 characters and the optimum is 50 and above characters). Please check the content and structure and optimize if required. Try to increase the title length of all position titles to 50 characters if possible.']
+					["40","Format and length of your job position taglines needs to be impoved. You furthermore want to include domain knowledge keywords that you want your profile to show up when recruiters search for such knowledge or skillset.","The length of the position title inside the current and past employers seem to be low (we count 20-29 characters and the optimum is 50 and above characters). Please check the content and structure and optimize if required. Try to increase the title length of all position titles to 50 characters if possible."]
 
 				when 10..19
-					['20','Format and length of your job position taglines must be impoved.','The length of the position title inside the current and past employers seem to be very low (we count 10-19 characters and the optimum is 50 and above characters). Please check the content and structure and optimize if required. Try to increase the title length of all position titles to 50 characters if possible.']
+					["20","Format and length of your job position taglines must be impoved. You furthermore want to include domain knowledge keywords that you want your profile to show up when recruiters search for such knowledge or skillset.","The length of the position title inside the current and past employers seem to be very low (we count 10-19 characters and the optimum is 50 and above characters). Please check the content and structure and optimize if required. Try to increase the title length of all position titles to 50 characters if possible."]
 
 				when 0..9
-					['0','Format and length of your job position taglines is weak and must be impoved.','The length of the position title inside the current and past employers seem to be very low (we count 0-9 characters and the optimum is 50 and above characters). Please check the content and structure and optimize if required. Increase the title length of all position titles to 50 characters if possible.']
+					["0","Format and length of your job position taglines is weak and must be impoved. You furthermore want to include domain knowledge keywords that you want your profile to show up when recruiters search for such knowledge or skillset.","The length of the position title inside the current and past employers seem to be very low (we count 0-9 characters and the optimum is 50 and above characters). Please check the content and structure and optimize if required. Increase the title length of all position titles to 50 characters if possible."]
 
 				else
-	 				['100','Congratulations, the format and length of your job position taglines are optimal.','The length of the position title inside the current and past employers seem to be optimal (50 and above characters). Please check the content and structure and optimize if required without reducing the length.']
+	 				["100","Congratulations, the format and length of your job position taglines are optimal. You might want to review and ensure that you included in your titles the right domain knowledge keywords for which you want recruiters to find you.","The length of the position title inside the current and past employers seem to be optimal (50 and above characters). Please check the content and structure and optimize if required without reducing the length."]
 			end
 		end
 		add_tag(__method__,values,checking_value)
@@ -246,34 +257,34 @@ class Logic
 			checking_value=@all_companies.map{|a| a["description"]}.join.length/@all_companies.count
 			values=case checking_value
 				when 1250..1350
-					['10','Format and length of your job position descriptions must be improved.','The average length of the position descriptions inside the current and past employers are too long (we count 1250-1350 characters and the optimum is between 650-899 characters). Please summarize the key achivements and resposibilities in a lean and structured way using bullet points like ►or ●. Try to get the length of all descriptions close to 650 characters.']
+					["10","Format and length of your job position descriptions must be improved.","The average length of the position descriptions inside the current and past employers are too long (we count 1250-1350 characters and the optimum is between 650-899 characters). Please summarize the key achivements and resposibilities in a lean and structured way using bullet points like ►or ●. Try to get the length of all descriptions close to 650 characters."]
 
 				when 1150..1249
-					['20','1150-1249: Format and length of your job position descriptions needs to be improved.','The average length of the position descriptions inside the current and past employers are too long (we count 1150-1250 characters and the optimum is between 650-899 characters). Please summarize the key achivements and resposibilities in a lean and structured way using bullet points like ►or ●. Try to get the length of all descriptions close to 650 characters.']
+					["20","1150-1249: Format and length of your job position descriptions needs to be improved.","The average length of the position descriptions inside the current and past employers are too long (we count 1150-1250 characters and the optimum is between 650-899 characters). Please summarize the key achivements and resposibilities in a lean and structured way using bullet points like ►or ●. Try to get the length of all descriptions close to 650 characters."]
 
 				when 1050..1149
-					['50','Format and length of your job position descriptions can be improved.','The average length of the position descriptions inside the current and past employers are too long (we count 1050-1150 characters and the optimum is between 650-899 characters). Please summarize the key achivements and resposibilities in a lean and structured way using bullet points like ►or ●. Try to get the length of all descriptions close to 650 characters.']
+					["50","Format and length of your job position descriptions can be improved.","The average length of the position descriptions inside the current and past employers are too long (we count 1050-1150 characters and the optimum is between 650-899 characters). Please summarize the key achivements and resposibilities in a lean and structured way using bullet points like ►or ●. Try to get the length of all descriptions close to 650 characters."]
 
 				when 900..1049
-					['80','Format and length of your job position descriptions is close to optimal and can be improved.','The average length of the position descriptions inside the current and past employers are too long (we count 900-1050 characters and the optimum is between 650-899 characters). Please summarize the key achivements and resposibilities in a lean and structured way using bullet points like ►or ●. Try to get the length of all descriptions close to 650 characters.']
+					["80","Format and length of your job position descriptions is close to optimal and can be improved.","The average length of the position descriptions inside the current and past employers are too long (we count 900-1050 characters and the optimum is between 650-899 characters). Please summarize the key achivements and resposibilities in a lean and structured way using bullet points like ►or ●. Try to get the length of all descriptions close to 650 characters."]
 
 				when 650..899
-					['100','Congratulations, format and length of your job position descriptions is optimal.','The average length of the position descriptions inside the current and past employers seem to be optimal (650-899 characters). Please focus on the content and ensure that the key achivements and resposibilities are summarized in a lean and structured way using bullet points like ►or ●. Try to keep the length of all descriptions close to 650 characters.']
+					["100","Congratulations, format and length of your job position descriptions is optimal.","The average length of the position descriptions inside the current and past employers seem to be optimal (650-899 characters). Please focus on the content and ensure that the key achivements and resposibilities are summarized in a lean and structured way using bullet points like ►or ●. Try to keep the length of all descriptions close to 650 characters."]
 
 				when 500..649
-					['80','Format and length of your job position descriptions is close to optimal and can be improved.','The average length of the position descriptions inside the current and past employers are at the lower end (we count 500-649 characters and the optimum is between 650-899 characters). Please summarize the key achivements and resposibilities in a lean and structured way using bullet points like ►or ●. Try to increase the length of all descriptions close to 650 characters.']
+					["80","Format and length of your job position descriptions is close to optimal and can be improved.","The average length of the position descriptions inside the current and past employers are at the lower end (we count 500-649 characters and the optimum is between 650-899 characters). Please summarize the key achivements and resposibilities in a lean and structured way using bullet points like ►or ●. Try to increase the length of all descriptions close to 650 characters."]
 
 				when 400..499
-					['50','Format and length of your job position descriptions can be improved.','The average length of the position descriptions inside the current and past employers are low (we count 400-500 characters and the optimum is between 650-899 characters). Please summarize the key achivements and resposibilities in a lean and structured way using bullet points like ►or ●. Try to increase the length of all descriptions close to 650 characters.']
+					["50","Format and length of your job position descriptions can be improved.","The average length of the position descriptions inside the current and past employers are low (we count 400-500 characters and the optimum is between 650-899 characters). Please summarize the key achivements and resposibilities in a lean and structured way using bullet points like ►or ●. Try to increase the length of all descriptions close to 650 characters."]
 
 				when 300..399
-					['20','1150-1249: Format and length of your job position descriptions needs to be improved.','The average length of the position descriptions inside the current and past employers are too low (we count 300-400 characters and the optimum is between 650-899 characters). Please summarize the key achivements and resposibilities in a lean and structured way using bullet points like ►or ●. Increase the length of all descriptions close to 650 characters.']
+					["20","1150-1249: Format and length of your job position descriptions needs to be improved.","The average length of the position descriptions inside the current and past employers are too low (we count 300-400 characters and the optimum is between 650-899 characters). Please summarize the key achivements and resposibilities in a lean and structured way using bullet points like ►or ●. Increase the length of all descriptions close to 650 characters."]
 
 				when 200..299
-					['10','Format and length of your job position descriptions must be improved.','The average length of the position descriptions inside the current and past employers are too low (we count 200-300 characters and the optimum is between 650-899 characters). Please summarize the key achivements and resposibilities in a lean and structured way using bullet points like ►or ●. Increase the length of all descriptions close to 650 characters.']
+					["10","Format and length of your job position descriptions must be improved.","The average length of the position descriptions inside the current and past employers are too low (we count 200-300 characters and the optimum is between 650-899 characters). Please summarize the key achivements and resposibilities in a lean and structured way using bullet points like ►or ●. Increase the length of all descriptions close to 650 characters."]
 
 				else
-					['0','Format and length of your job position descriptions is weak and must be improved.','The average length of the position descriptions inside the current and past employers are either much too low or much to high (the optimum number of characters are between 650-899). Please summarize the key achivements and resposibilities in a lean and structured way using bullet points like ►or ●. Increase or decrease the length of all descriptions close to 650 characters.']
+					["0","Format and length of your job position descriptions is weak and must be improved.","The average length of the position descriptions inside the current and past employers are either much too low or much to high (the optimum number of characters are between 650-899). Please summarize the key achivements and resposibilities in a lean and structured way using bullet points like ►or ●. Increase or decrease the length of all descriptions close to 650 characters."]
 			end
 		end
 		add_tag(__method__,values,checking_value)
@@ -287,19 +298,16 @@ class Logic
   		checking_value=bullet_points/@all_companies.count
 			values=case checking_value
 				when 8..10
-					['50', 'The number of bullet points used in your job position descriptions are too high and should be reduced for the benefit of short and targeted key messages.', 'We count that the average number of bullet points used in the job position descriptions are high. Ensure that the candidate has at least 4-7 bullet points clearly stating his achivements and responsibilities per position. Most impressive achivements first. Use the same bullet points in all descriptions (either ► or ●)']
+					["50", "The number of bullet points used in your job position descriptions are too high (#{checking_value} bullet points in average) and a reader might be overwealmed and skip reading. Reduce the number of used bullet points for the benefit of short and targeted key messages.", "We count that the average number of bullet points used in the job position descriptions are high. Ensure that the candidate has at least 4-7 bullet points clearly stating his achivements and responsibilities per position. Most impressive achivements first. Use the same bullet points in all descriptions (either ► or ●)"]
 
 				when 4..7
-					['100', 'Congratulation, the number of bullet points used in your job position descriptions are optimal.', 'We count that the average number of bullet points used in the job position descriptions are optimal. Focus on the content and ensure that the candidate has at least 4-7 bullet points clearly stating his achivements and responsibilities per position. Most impressive achivements first. Use the same bullet points in all descriptions (either ► or ●)']
+					["100", "Congratulation, the number of bullet points used in your job position descriptions are optimal (#{checking_value} bullet points in average). You found the right balance of focussing on the relevant and providing enough content.", "We count that the average number of bullet points used in the job position descriptions are optimal. Focus on the content and ensure that the candidate has at least 4-7 bullet points clearly stating his achivements and responsibilities per position. Most impressive achivements first. Use the same bullet points in all descriptions (either ► or ●)"]
 
 				when 1..3
-					['50', 'The number of bullet points used in your job position descriptions are low and must be increased for the benefit of more comprehensive and targeted key messages.', 'We count that the average number of bullet points used in the job position descriptions are rather low. Ensure that the candidate has at least 4-7 bullet points clearly stating his achivements and responsibilities per position. Most impressive achivements first. Use the same bullet points in all descriptions (either ► or ●)']
-
-				when 0
-					['0', 'To use bullet points to list your achievements and responsibilitieswithin a job position description is best practise and you should start takeing advantage of this.', "The position descriptions of this candidate doesn't seem to use bullet points. Help the candidate with some structure and ensure that the candidate has at least 4-7 bullet points clearly stating his achivements and responsibilities per position. Most impressive achivements first. Use the same bullet points in all descriptions (either ► or ●)"]
+					["50", "The number of bullet points used in your job position descriptions are low (#{checking_value} bullet points in average) and should be increased for the benefit of more comprehensive and targeted key messages.", "We count that the average number of bullet points used in the job position descriptions are rather low. Ensure that the candidate has at least 4-7 bullet points clearly stating his achivements and responsibilities per position. Most impressive achivements first. Use the same bullet points in all descriptions (either ► or ●)"]
 
 				else
-					['0', 'The number of bullet points used in you job position descriptions are very high and must be reduced. More is less for the benefit of short and targeted messages.', 'We count that the average number of bullet points used in the job position descriptions are very high. Ensure that the candidate has a maxiumum of 4-7 bullet points clearly stating his achivements and responsibilities per position. Most impressive achivements first. Use the same bullet points in all descriptions (either ► or ●)']
+					["0", "Using bullet points such as '- ► » ■ ♦ ◆ ● >' to list your achievements is best practise and provides the reader a good structure. You should start takeing advantage of this.", "The position descriptions of this candidate doesn't seem to use bullet points. Help the candidate with some structure and ensure that the candidate has at least 4-7 bullet points clearly stating his achivements and responsibilities per position. Most impressive achivements first. Use the same bullet points in all descriptions (either ► or ●)"]
 			end
 		end
 		add_tag(__method__,values, checking_value)
@@ -317,13 +325,15 @@ class Logic
 		puts "-> #{specific_mistakes}"
 		values=case specific_mistakes
 			when 6..15
-				['30', 'Grammar and spelling mistakes have been identifed in your profile.', 'Grammar and spelling mistakes have been identifed in the profile. Please let a word spell-check run throught the summary text, any profile titles and any profile descriptions. 0 grammar and spelling mistakes is a must.']
-			when 1..5
-				['60', 'Grammar and spelling mistakes have been identifed in your profile.', 'Grammar and spelling mistakes have been identifed in the profile. Please let a word spell-check run throught the summary text, any profile titles and any profile descriptions. 0 grammar and spelling mistakes is a must.']
+				["30", "#{specific_mistakes} grammar and spelling mistakes have been found in your profile. Find and correct them as readers will recognize grammar and spelling mistakes as a lack of detail.", "Grammar and spelling mistakes have been identifed in the profile. Please let a word spell-check run throught the summary text, any profile titles and any profile descriptions. 0 grammar and spelling mistakes is a must."]
+			when 2..5
+				["60", "#{specific_mistakes} grammar and spelling mistakes have been found in your profile. Find and correct them as readers will recognize grammar and spelling mistakes as a lack of detail.", "Grammar and spelling mistakes have been identifed in the profile. Please let a word spell-check run throught the summary text, any profile titles and any profile descriptions. 0 grammar and spelling mistakes is a must."]
+			when 1
+				["80", "#{specific_mistakes} grammar and spelling mistake has been found in your profile. Find and correct it as readers will recognize grammar and spelling mistakes as a lack of detail.", "Grammar and spelling mistakes have been identifed in the profile. Please let a word spell-check run throught the summary text, any profile titles and any profile descriptions. 0 grammar and spelling mistakes is a must."]
 			when 0
-				['100', 'Congratulations, there are no grammar or spelling mistakes in your profile. A great impression is guaranteed.', 'No action required.']
+				["100", "Congratulations, there are no grammar or spelling mistakes in your profile. A great impression is guaranteed.", "No action required."]
 			else
-				['30', 'Many grammar and spelling mistakes have been identifed in your profile.', 'Many grammar and spelling mistakes have been identifed in the profile. Please let a word spell-check run throught the summary text, any profile titles and any profile descriptions. 0 grammar and spelling mistakes is a must.']
+				["30", "#{specific_mistakes} grammar and spelling mistakes have been found in your profile. Find and correct them as readers will recognize grammar and spelling mistakes as a lack of detail.", "Many grammar and spelling mistakes have been identifed in the profile. Please let a word spell-check run throught the summary text, any profile titles and any profile descriptions. 0 grammar and spelling mistakes is a must."]
 		end
 		add_tag(__method__,values,"Number of grammar and spelling mistakes #{specific_mistakes}")
 	end
@@ -336,16 +346,19 @@ class Logic
 		specific_mistakes=get_all_style_and_pass_mistakes
 		values=case specific_mistakes
 			when 6..15
-				['30', 'Passive language has been identifed in your profile. Remember, your profile is a sales tool—and you’re the product. You can increase the impact of your profile by using active language.', '6-15 instances of passive language has been identifed in the candidates profile. Please review the summary text, any profile titles and any profile descriptions and turn passive language into active language e.g. in a achivement bullet point ""...sales increased by 15%"" is passive language and you should use strong action words and active languate like ""Increased sales by 15%"".']
+				["30", "#{specific_mistakes} instances of passive language have been found in your profile. Remember, your profile is a sales tool—and you’re the product. Increase the impact of your profile by strictly using active language.", "6-15 instances of passive language has been identifed in the candidates profile. Please review the summary text, any profile titles and any profile descriptions and turn passive language into active language e.g. in a achivement bullet point ""...sales increased by 15%"" is passive language and you should use strong action words and active languate like ""Increased sales by 15%""."]
 
-			when 1..5
-				['60', 'Some passive language has been identifed in your profile. Remember, your profile is a sales tool—and you’re the product. You can increase the impact of your profile by using active language.', '1-5 instances of passive language has been identifed in the candidates profile. Please review the summary text, any profile titles and any profile descriptions and turn passive language into active language e.g. in a achivement bullet point ""...sales increased by 15%"" is passive language and you should use strong action words and active languate like ""Increased sales by 15%"".']
+			when 2..5
+				["60", "#{specific_mistakes} instances of passive language have been found in your profile. Remember, your profile is a sales tool—and you’re the product. Increase the impact of your profile by strictly using active language.", "1-5 instances of passive language has been identifed in the candidates profile. Please review the summary text, any profile titles and any profile descriptions and turn passive language into active language e.g. in a achivement bullet point ""...sales increased by 15%"" is passive language and you should use strong action words and active languate like ""Increased sales by 15%""."]
+
+			when 1
+				["80", "#{specific_mistakes} instance of passive language has been found in your profile. Remember, your profile is a sales tool—and you’re the product. Increase the impact of your profile by strictly using active language.", "1-5 instances of passive language has been identifed in the candidates profile. Please review the summary text, any profile titles and any profile descriptions and turn passive language into active language e.g. in a achivement bullet point ""...sales increased by 15%"" is passive language and you should use strong action words and active languate like ""Increased sales by 15%""."]
 
 			when 0
-				['100', 'Congratulations, there are no passive voice language in your profile.', 'No action required.']
+				["100", "Congratulations, no passive language has been found in your profile.", "No action required."]
 
 			else
-				['30', 'Many passive language instances has been identifed in your profile. Remember, your profile is a sales tool—and you’re the product. You can increase the impact of your profile by using active language.', 'Over 15 instances of passive language has been identifed in the candidates profile. Please review the summary text, any profile titles and any profile descriptions and turn passive language into active language e.g. in a achivement bullet point ""...sales increased by 15%"" is passive language and you should use strong action words and active languate like ""Increased sales by 15%"".']
+				["#{specific_mistakes} instances of passive language have been found in your profile. Remember, your profile is a sales tool—and you’re the product. Increase the impact of your profile by using active language.", "Over 15 instances of passive language has been identifed in the candidates profile. Please review the summary text, any profile titles and any profile descriptions and turn passive language into active language e.g. in a achivement bullet point ""...sales increased by 15%"" is passive language and you should use strong action words and active languate like ""Increased sales by 15%""."]
 		end
 		add_tag(__method__,values,"Number of style or passive voice mistakes #{specific_mistakes}")
 	end
@@ -374,13 +387,14 @@ class Logic
 			# List 1: 3
 			# List 2: 2
 			# Average number of action words used:  2.5
-		values=[]
-		words_amount=0
+	  values=[]
+	  words_amount=0
 	  action_word_list=['administered','analyzed','appointed','approved','assigned','attained','authorized','chaired','considered','consolidated','contracted','controlled','converted','coordinated','decided','delegated','developed','directed','eliminated','emphasized','enforced','enhanced','established','executed','generated','handled','headed','hired','hosted','improved','incorporated','increased','initiated','inspected','instituted','led','managed','merged','motivated','organized','originated','overhauled','oversaw','planned','presided','prioritized','produced','recommended','reorganized','replaced','restored','reviewed','scheduled','streamlined','strengthened','supervised','terminated','addressed','advertised','arbitrated','arranged','articulated','authored','clarified','collaborated','communicated','composed','condensed','conferred','consulted','contacted','conveyed','convinced','corresponded','debated','defined','described','developed','directed','discussed','drafted','edited','elicited','enlisted','explained','expressed','formulated','furnished','incorporated','influenced','interacted','interpreted','interviewed','involved','joined','judged','lectured','listened','marketed','mediated','moderated','negotiated','observed','outlined','participated','persuaded','presented','promoted','proposed','publicized','reconciled','recruited','referred','reinforced','reported','resolved','responded','solicited','specified','spoke','suggested','summarized','synthesized','translated','wrote','analyzed','clarified','collected','compared','conducted','critiqued','detected','determined','diagnosed','evaluated','examined','experimented','explored','extracted','formulated','gathered','identified','inspected','interpreted','interviewed','invented','investigated','located','measured','organized','researched','searched','solved','summarized','surveyed','systematized','tested','adapted','assembled','built','calculated','computed','conserved','constructed','converted','debugged','designed','determined','developed','engineered','fabricated','fortified','installed','maintained','operated','overhauled','printed','programmed','rectified','regulated','remodeled','repaired','replaced','restored','solved','specialized','standardized','studied','upgraded','utilized','adapted','advised','clarified','coached','communicated','conducted','coordinated','critiqued','developed','enabled','encouraged','evaluated','explained','facilitated','focused','guided','individualized','informed','instilled','instructed','motivated','persuaded','set','goals','simulated','stimulated','taught','tested','trained','transmitted','tutored','administered','adjusted','allocated','analyzed','appraised','assessed','audited','balanced','calculated','computed','conserved','corrected','determined','developed','estimated','forecasted','managed','marketed','measured','planned','programmed','projected','reconciled','reduced','researched','retrieved','acted','adapted','began','combined','conceptualized','condensed','created','customized','designed','developed','directed','displayed','drew','entertained','established','fashioned','formulated','founded','illustrated','initiated','instituted','integrated','introduced','invented','modeled','modified','originated','performed','photographed','planned','revised','revitalized','shaped','solved','adapted','advocated','aided','answered','arranged','assessed','assisted','cared','for','clarified','coached','collaborated','contributed','cooperated','counseled','demonstrated','diagnosed','educated','encouraged','ensured','expedited','facilitated','familiarize','furthered','guided','helped','insured','intervened','motivated','provided','referred','rehabilitated','presented','resolved','simplified','supplied','supported','volunteered','approved','arranged','cataloged','categorized','charted','classified','coded','collected','compiled','corresponded','distributed','executed','filed','generated','implemented','incorporated','inspected','logged','maintained','monitored','obtained','operated','ordered','organized','prepared','processed','provided','purchased','recorded','registered','reserved','responded','reviewed','routed','scheduled','screened','set','up','submitted','supplied','standardized','systematized','updated','validated','verified','More','verbs','for','Accomplishments','achieved','completed','expanded','exceeded','improved','pioneered','reduced','resolved','restored','spearheaded','succeeded','surpassed','transformed','won']
 
 
 
 	  get_description_list #call method that generate @description_list
+
 
 	  @description_list.each do |description|
 	  	 words_after_bp=get_first_words_after_bullet_points(description)
@@ -392,15 +406,15 @@ class Logic
 	  if ratio
 		  values=case ratio
 		  	when 1..3
-					['20', 'Recruiters recommended starting your bullets with strong action-oriented words.Most used action-verbs across High Scoring Profiles Led/Managed/Analyzed/Created. As this is a best practise and powerful tool you should increase using it in a consistent way across your positions.', 'The candidates profile shows some achivement bullet points that start with a strong action word. Reveiw and increase the number in every position description and ensure that 4-7 bullet points do highlight the key achivements and that the FIRST word used in each achivement bullet point is a strong action word such as %s']
+					["20", "#{ratio} -- Recruiters recommended starting your bullets with strong action-oriented words. Some of the most used action-verbs across high scoring profiles are Led, Increased, Managed, Analyzed and Created. This is a best practise and powerful tool that you should adopt and use in a consistent way across all bullet points of your positions.", "The candidates profile shows some achivement bullet points that start with a strong action word. Reveiw and increase the number in every position description and ensure that 4-7 bullet points do highlight the key achivements and that the FIRST word used in each achivement bullet point is a strong action word such as %s"]
 					# -> please include the content of ACTION_WORD_LIST inside the placeholder %s
 
 				when 0
-					['0', "Recruiters recommended starting your bullets with strong action-oriented words. Most used action-verbs across High Scoring Profiles Led/Managed/Analyzed/Created. Your profile doesn't contain any action words in bullets. As this is a best practise and powerful tool you should increase using it in a consistent way across your positions.', 'The candidates profile either doesnt contain any bullet points to underline achivements OR the action words used within the bullet points are weak. Ensure that every position description contains 4-7 bullet points highlighting the key achivements and that the FIRST word used in each achivement bullet point is a strong action word such as INCREASED, MANAGED, CREATED, COORDINATED, DECREASED, DESIGNED, SUBMITTED, WROTE, DOCUMENTED ....."]
+					["0", "#{ratio} --- You don't seem to use strong action-oriented words to start an achievement bullet points. Recruiters recommended starting your bullets with strong action-oriented words. Some of the most used action-verbs across high scoring profiles are Led, Increased, Managed, Analyzed and Created. This is a best practise and powerful tool that you should adopt and use in a consistent way across all bullet points of your positions.", "The candidates profile either doesnt contain any bullet points to underline achivements OR the action words used within the bullet points are weak. Ensure that every position description contains 4-7 bullet points highlighting the key achivements and that the FIRST word used in each achivement bullet point is a strong action word such as INCREASED, MANAGED, CREATED, COORDINATED, DECREASED, DESIGNED, SUBMITTED, WROTE, DOCUMENTED ....."]
 						# -> please include the content of ACTION_WORD_LIST inside the placeholder %s
 
 				else
-					['100', 'Congratulations, recruiters recommended starting your bullets with strong action-oriented words. Your profile follows that best practise and will be recognized as impactfull.', 'The candidates profile show position descriptions that contain bullets starting with strong action words such as  %s Ensure that this is done in a consistant way and that every position description contains 4-7 bullet points highlighting the key achivements and that the FIRST word used in each achivement bullet point is a strong action word']
+					["100", "#{ratio} - Congratulations, recruiters will recognize that you start your bullets with strong action-oriented words demonstrating what you have achieved. Your profile follows that best practise and will be recognized as impactfull. Keep in mind to quantify your achivements if possible.", "The candidates profile show position descriptions that contain bullets starting with strong action words such as  %s Ensure that this is done in a consistant way and that every position description contains 4-7 bullet points highlighting the key achivements and that the FIRST word used in each achivement bullet point is a strong action word"]
 			end
 		end
 
@@ -421,13 +435,13 @@ class Logic
 			checking_value=@description_specifics_array.inject(:+)/@description_specifics_array.length
 			values=case checking_value
 				when 1..2
-					['50', '>70% of High Scoring Resumes show scope of responsibilities with quantified impact. We have benchmarked your usage of specifics and recommend adding more specifics to showcase the impact/scope of your work.', 'Look for more opportunities to quantify achivement bullet points in every job description. E.g. Managed to decrease project costs by 15% or Increased sales volume by 13% within 6 months']
+					["50", "#{checking_value} --- >70% of High Scoring Resumes show scope of responsibilities with quantified impact. We have benchmarked your usage of specifics and recommend adding more specifics to showcase the impact/scope of your work.", "Look for more opportunities to quantify achivement bullet points in every job description. E.g. Managed to decrease project costs by 15% or Increased sales volume by 13% within 6 months"]
 
 				when 0
-					['0', '>70% of High Scoring Resumes show scope of responsibilities with quantified impact. We have benchmarked your usage of specifics and recommend adding specifics to showcase the impact/scope of your work.', 'Look for opportunities to quantify achivement bullet points in every job description. E.g. Managed to decrease project costs by 15% or Increased sales volume by 13% within 6 months']
+					["0", "#{checking_value} --- >70% of High Scoring Resumes show scope of responsibilities with quantified impact. We have benchmarked your usage of specifics and recommend adding specifics to showcase the impact/scope of your work.", "Look for opportunities to quantify achivement bullet points in every job description. E.g. Managed to decrease project costs by 15% or Increased sales volume by 13% within 6 months"]
 
 				else
-					['100', 'Congratulations, you belong to the >70% of High Scoring Profiles that show scope of responsibilities with quantified impact.', 'It seems that the profile quantifies achivement bullet points more than average. Review the achivement bullet points and ensure that quantifications are done properly and in a consistant manner across all job descriptions. E.g. Managed to decrease project costs by 15% or Increased sales volume by 13% within 6 months']
+					["100", "#{checking_value} --- Congratulations, you belong to the >70% of High Scoring Profiles that show scope of responsibilities with quantified impact.", "It seems that the profile quantifies achivement bullet points more than average. Review the achivement bullet points and ensure that quantifications are done properly and in a consistant manner across all job descriptions. E.g. Managed to decrease project costs by 15% or Increased sales volume by 13% within 6 months"]
 			end
 		end
 		add_tag(__method__,values,checking_value)
@@ -447,14 +461,17 @@ class Logic
 		checking_value=matches.uniq.join(',') if matches
 		values=case matches.size
 
-			when 1..5
-				['40', 'You have used some words which are usually considered as filler words or informal language.', "The candidate used #{matches.size} avoided words in the summary or in the job descriptions. Please remove those avoided words. Avoided words: #{matches.uniq.join(',')}"]
+			when 2..5
+				["40", "Your profile contains #{matches.size} words which are usually considered as filler words or informal language. Strictly avoid those words for the benefit of a formal and direct language.", "The candidate used #{matches.size} avoided words in the summary or in the job descriptions. Please remove those avoided words. Avoided words: #{matches.uniq.join(",")}"]
+
+			when 1
+				["60", "Your profile contains #{matches.size} word that is considered as filler words or informal language. Strictly avoid those words for the benefit of a formal and direct language.", "The candidate used #{matches.size} avoided words in the summary or in the job descriptions. Please remove those avoided words. Avoided words: #{matches.uniq.join(",")}"]
 
 			when 0
-				['100', 'Congratulations, you havent used any filler words or informal language.', 'Look for opportunities to quantify achivement bullet points in every job description. E.g. Managed to decrease project costs by 15% or Increased sales volume by 13% within 6 months']
+				["100", "Congratulations, you haven't used any filler words or informal language. Recruiters will recognized you profile as formal.", "Look for opportunities to quantify achivement bullet points in every job description. E.g. Managed to decrease project costs by 15% or Increased sales volume by 13% within 6 months"]
 
 			else
-				['0', 'You have used a lot of words which are usually considered as filler words or informal language.', "The candidate used #{matches.size} avoided words in the summary or in the job descriptions. Please remove those avoided words. Avoided words: #{matches.uniq.join(',')}"]
+				["0", "Your profile contains #{matches.size} words which are usually considered as filler words or informal language. Strictly avoid those words for the benefit of a formal and direct language.", "The candidate used #{matches.size} avoided words in the summary or in the job descriptions. Please remove those avoided words. Avoided words: #{matches.uniq.join(",")}"]
 
 		end
 		checking_value
@@ -498,8 +515,8 @@ class Logic
 			past_companies_title=@json['past_companies'].map{|a| a["title"]}.join(' ')
 			title=@json['title']*5 if @json['title']
 			summary=@json['summary']*3 if @json["summary"]
-			country=@json['country']*5 if @json['country']
-			skills=@json['skills'].join(' ')*3 if @json['skills']
+			country=@json['country']*7 if @json['country']
+			skills=@json['skills'].join(' ')*4 if @json['skills']
 			cur_descriptions=current_companies_description*3
 			cur_title=current_companies_title*4
 			big_string="#{title} #{summary} #{country} #{skills} #{cur_descriptions} #{cur_title} #{past_companies_title} #{past_companies_description}"
@@ -523,15 +540,15 @@ class Logic
 			:format => {
 				:title_score => "15",
 				:summary_score => "15",
-				:summary_contact_score => "2",
-				:linkedin_url_score => "2",
+				:summary_contact_score => "0",
+				:linkedin_url_score => "0",
 				:number_of_connections_score => "10",
-				:skills_score => "10",
+				:skills_score => "12",
 				:groups_score => "2",
 				:organizations_score => "2",
 				:average_title_score => "15",
 				:average_description_score => "15",
-				:average_bullet_points_score => "12"
+				:average_bullet_points_score => "14"
 				},
 			:content => {
 				:grammar_score => "30",
@@ -547,25 +564,25 @@ class Logic
 		@total_score=((40*format_section_score)+(60*content_section_score))/100
 		values=case @total_score
 			when 0..30
-				[ @total_score,"You achieved score substantially below average. Your profile needs substantial improvement in several focus areas. Recruiters and peers are unable to find your profile using keywords that would match your soft or hard skills. Your profile is very likely to be assessed as weak and minimalistic. Adjustments in the highlighted forces areas will substantially increase visibility and impact of your profile. Recruiters and peers will start noticing your profile as a subject matter in your field."]
+				[ @total_score,"Your Linkedin profile belongs to the bottom performer and needs substantial improvement in several areas. The number of recruiters that land on your profile must be very low. Your profile shows up at the end of a linkedin search result list when recruiters search for candidates that match required hard and soft skills. Your profile is assessed as minimalistic and not optimized. Adjustments in the highlighted forces areas will substantially increase visibility and impact of your profile. You will recognize an increased number of visitors on your profile along with increased recruiter requests."]
 
 			when 31..50
-				[ @total_score,"You achieved score below average. Your profile needs major improvement in the highlighted focus areas. Recruiters and peers are unable to find your profile using keywords that would match your soft or hard skills. Your profile is likely to be assessed as weak or uncomplete. Adjustments will substantially increase visibility and impact of your profile. Recruiters and peers will start noticing your profile as a subject matter in your field."]
+				[ @total_score,"Your Linkedin profile scores below average and needs improvement in several areas. The number of recruiters that land on your profile must be very low. Your profile shows up at the end of a linkedin search result list when recruiters search for candidates that match required hard and soft skills. Your profile is assessed as minimalistic and not optimized. Adjustments in the highlighted forces areas will substantially increase visibility and impact of your profile. You will recognize an increased number of visitors on your profile along with increased recruiter requests."]
 
 			when 50..70
-				[ @total_score,"You achieved an average score. Recruiters and peers have a hard time to find your profile using keywords that would match your soft or hard skills. Your profile is likely to be assessed as average or minimalistic. Improvement in the highlighted focus areas will substantially increase visibility and impact of your profile. Recruiters and peers will acknowledge your profile as a subject matter in your field."]
+				[ @total_score,"Your Linkedin profile achieved an average score and needs improvement in some areas. The number of recruiters that land on your profile must be very low. Your profile shows up at the end of a linkedin search result list when recruiters search for candidates that match required hard and soft skills. Your profile is assessed as incomplete and not optimized. Adjustments in the highlighted forces areas will substantially increase visibility and impact of your profile. You will recognize an increased number of visitors on your profile along with increased recruiter requests."]
 
 			when 70..87
-				[ @total_score,"You achieved a good score. Recruiters and peers already find your profile using keywords that match your soft or hard skills. Your profile is likely to be assessed as slightly over average.  Improvements in the highlighted focus areas will increase visibility and impact of your profile. Recruiters and peers will acknowledge your profile as subject matter in your field. You will be featured in the ""People Also Viewed"" and ""Do you know"" section that will further expand your visibility national wide."]
+				[ @total_score,"Your Linkedin profile achieved a good score, however can need improvement in some areas. The number of recruiters that land on your profile must be low. Your profile shows up somewhere in the middle of a linkedin search result list when recruiters search for candidates that match required hard and soft skills. Your profile is assessed as good, however can be optimized. Adjustments in the highlighted forces areas will substantially increase visibility and impact of your profile. You will recognize an increased number of visitors on your profile along with increased recruiter requests."]
 
 			when 88..94
-				[ @total_score," ""Cum Laude"" Congratulations! You achieved a very high score. Recruiters and peers find your profile using keywords matching your soft or hard skills. Your profile is assesed as very good. Improvements in the highlighted focus areas will further increase visibility and impact of your profile. Recruiters and peers will acknowledge your profile as the subject matter in your field. You will increasingly be featured in the ""People Also Viewed"" and ""Do you know"" section that will further expand your visibility national wide."]
+				[ @total_score," ""Cum Laude"" Congratulations! You achieved a very high score. Recruiters and peers find your profile using keywords that match your soft or hard skills. Your profile is assesed as very good. Improvements in the highlighted focus areas will further increase visibility and impact of your profile. Recruiters and peers will acknowledge your profile as the subject matter in your field. You will increasingly be featured in the ""People Also Viewed"" and ""Do you know"" section that will further expand your visibility national wide."]
 
 			when 95..97
 				[ @total_score," ""Magna Cum Laude"" Congratulations! You achieved an exceptional high score. Recruiters and peers easily find your profile using keywords matching your soft or hard skills. Your profile certainly is assessed as exceptional. Improvements in the highlighted focus areas will bring you to the top 2.5% and further increase visibility and impact of your profile. Recruiters and peers will acknowledge your profile as the subject matter in your field. You will be featured in the ""People Also Viewed"" and ""Do you know"" section that will further expand your visibility globally."]
 
 			when 98..100
-				[ @total_score," ""Summa Cum Laude"" Congratulations! You achieved the highest possible score. Your profile frequently appears on the screens of recruiters and peers within the linkedin network but also outside (google). LinkedIn users constantly see your profile suggested under ""People Also Viewed"" and ""Do you know"" sections. Your profile appears in the result screen under the top 10 candidates by searching most of your soft or hard skills. There is nothing we can advise you others than further progressing on your career. The mission of our company is to bring candidates where your are. We would be grateful to have you as an ambassador of our service!"]
+				[ @total_score," ""Summa Cum Laude"" Congratulations! You achieved the highest possible score. Your profile frequently appears on the screens of recruiters and peers within the linkedin network but also outside (e.g. inbound traffic from search engines). LinkedIn users constantly see your profile suggested under ""People Also Viewed"" and ""Do you know"" sections. Your profile appears in the result screen under the top 10 candidates by searching for keywords that match most of your soft or hard skills. There is nothing we can advise you. The mission of our company is to develop clients profiles where your profile is. We would be grateful to win you as an ambassador of our service!"]
 		end
 		add_tag(__method__,values, @total_score)
 	end

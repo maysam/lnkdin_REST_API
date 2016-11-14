@@ -48,9 +48,12 @@ private
   def set_profile
     if params[:link][/linkedin.com\/in\/.*/]
         @profile=Profile.find_or_create_by(link:params[:link].strip)
-        if @profile.new_record?
-          @profile.priority = params[:priority]
-        end
+        @profile.update_attribute :json, nil
+        @profile.update_attribute :priority, params[:priority] if params[:priority]
+
+        # if @profile.new_record?
+          # @profile.priority = params[:priority]
+        # end
     else
       render json: {"error" => "Link is incorrect"}
     end

@@ -119,8 +119,8 @@ class Logic
 
 	def number_of_connections_score
 		values=[]
-		nr_connections = @json["number_of_connections"][/\d+/].to_i
-		values=case @json["number_of_connections"][/\d+/].to_i
+		nr_connections = @json["number_of_connections"][/\d+/].to_i rescue 0
+		values=case nr_connections
 			when 400..499
 				["50","Your profile shows a good connected professional. However, it is important that you increase your reach from #{nr_connections} to 500+ connectins as this will clearly underline your subject matter expertise.","No action required."]
 
@@ -139,7 +139,7 @@ class Logic
 			else
 				["100","Congratulations, your profile clearly shows a recruiter a well connected professional. Keep adding and maintaining connections.","No action required."]
 		end
-		add_tag(__method__,values, @json["number_of_connections"][/\d+/].to_i)
+		add_tag(__method__,values, nr_connections)
 	end
 
 	def skills_score
@@ -559,8 +559,11 @@ class Logic
 			}
 		}
 		values=[]
-		format_section_score=weight[:format].map{|k,v| @result[k][:score].to_i*v.to_i}.inject(:+)/100 #weight[:format].size
-		content_section_score=weight[:content].map{|k,v| @result[k][:score].to_i*v.to_i}.inject(:+)/100 #weight[:content].size
+		format_section_score=weight[:format].map do |k,v|
+			@result[k][:score].to_i*v.to_i rescue 0
+		end
+		format_section_score = format_section_score.inject(:+)/100 #weight[:format].size
+		content_section_score=weight[:content].map{|k,v| @result[k][:score].to_i*v.to_i rescue 0}.inject(:+)/100 #weight[:content].size
 		@total_score=((40*format_section_score)+(60*content_section_score))/100
 		values=case @total_score
 			when 0..30

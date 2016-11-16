@@ -78,7 +78,7 @@ private
     @logic.summary_score
     @logic.summary_contact_score
     @logic.linkedin_url_score
-    @logic.number_of_connections_score if @logic.json["number_of_connections"]
+    @logic.number_of_connections_score
     @logic.skills_score
     @logic.groups_score
     @logic.organizations_score

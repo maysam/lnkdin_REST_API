@@ -16,26 +16,31 @@ class Api::V1::ApiController < ApplicationController
   def generate
     priority = params[:priority].nil? ? 1 : params[:priority]
 # Commented for normal work of dummy API. Uncomment when need to turn on this part
-    if @profile.json.nil?
-      # PriorityQueue.instance << Element.new(params[:link], priority)
+    if params[:callback]
+      @profile.update_attributes callback: params[:callback]
+      head :ok
+    else
+      until !@profile.json.nil?
+         @profile.json
+        sleep 1
+        @profile.reload
+      end
+      render_response
     end
-    until !@profile.json.nil?
-       @profile.json
-      sleep 1
-      @profile.reload
-    end
-    render_response
   end
 
   def update
     if params[:json] && params[:json]  != ''
       if params[:json] === {result: 'invalid'}.to_json
-        @profile.update_attribute :json, params[:json]
+        @profile.update_attributes json: params[:json]
         head :ok
       else
         @logic=Logic.new
         execute_logic JSON.parse params[:json].to_s.force_encoding("ISO-8859-1").encode("UTF-8")
-        @profile.update_attribute :json, @logic.json.to_json
+        @profile.update_attributes json: @logic.json.to_json
+        if @profile.callback
+          HTTParty.post(@profile.callback,body:{link: @profile.link, json: @logic.json.to_json})
+        end
         render json: @logic.json
       end
     else

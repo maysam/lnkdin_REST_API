@@ -46,3 +46,4 @@ gem "unicorn-rails"
   gem 'spring'
 end
 
+gem 'httparty'

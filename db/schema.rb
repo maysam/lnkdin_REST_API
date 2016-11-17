@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161106015353) do
+ActiveRecord::Schema.define(version: 20161116152525) do
 
   create_table "profiles", force: :cascade do |t|
     t.text     "json"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20161106015353) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "priority",   default: 2, null: false
+    t.string   "callback"
   end
 
 end

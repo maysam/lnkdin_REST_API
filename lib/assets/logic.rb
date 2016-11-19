@@ -358,7 +358,7 @@ class Logic
 				["100", "Congratulations, no passive language has been found in your profile.", "No action required."]
 
 			else
-				["#{specific_mistakes} instances of passive language have been found in your profile. Remember, your profile is a sales tool—and you’re the product. Increase the impact of your profile by using active language.", "Over 15 instances of passive language has been identifed in the candidates profile. Please review the summary text, any profile titles and any profile descriptions and turn passive language into active language e.g. in a achivement bullet point ""...sales increased by 15%"" is passive language and you should use strong action words and active languate like ""Increased sales by 15%""."]
+				["0", "#{specific_mistakes} instances of passive language have been found in your profile. Remember, your profile is a sales tool—and you’re the product. Increase the impact of your profile by using active language.", "Over 15 instances of passive language has been identifed in the candidates profile. Please review the summary text, any profile titles and any profile descriptions and turn passive language into active language e.g. in a achivement bullet point ""...sales increased by 15%"" is passive language and you should use strong action words and active languate like ""Increased sales by 15%""."]
 		end
 		add_tag(__method__,values,"Number of style or passive voice mistakes #{specific_mistakes}")
 	end
@@ -389,7 +389,7 @@ class Logic
 			# Average number of action words used:  2.5
 	  values=[]
 	  words_amount=0
-	  action_word_list=['administered','analyzed','appointed','approved','assigned','attained','authorized','chaired','considered','consolidated','contracted','controlled','converted','coordinated','decided','delegated','developed','directed','eliminated','emphasized','enforced','enhanced','established','executed','generated','handled','headed','hired','hosted','improved','incorporated','increased','initiated','inspected','instituted','led','managed','merged','motivated','organized','originated','overhauled','oversaw','planned','presided','prioritized','produced','recommended','reorganized','replaced','restored','reviewed','scheduled','streamlined','strengthened','supervised','terminated','addressed','advertised','arbitrated','arranged','articulated','authored','clarified','collaborated','communicated','composed','condensed','conferred','consulted','contacted','conveyed','convinced','corresponded','debated','defined','described','developed','directed','discussed','drafted','edited','elicited','enlisted','explained','expressed','formulated','furnished','incorporated','influenced','interacted','interpreted','interviewed','involved','joined','judged','lectured','listened','marketed','mediated','moderated','negotiated','observed','outlined','participated','persuaded','presented','promoted','proposed','publicized','reconciled','recruited','referred','reinforced','reported','resolved','responded','solicited','specified','spoke','suggested','summarized','synthesized','translated','wrote','analyzed','clarified','collected','compared','conducted','critiqued','detected','determined','diagnosed','evaluated','examined','experimented','explored','extracted','formulated','gathered','identified','inspected','interpreted','interviewed','invented','investigated','located','measured','organized','researched','searched','solved','summarized','surveyed','systematized','tested','adapted','assembled','built','calculated','computed','conserved','constructed','converted','debugged','designed','determined','developed','engineered','fabricated','fortified','installed','maintained','operated','overhauled','printed','programmed','rectified','regulated','remodeled','repaired','replaced','restored','solved','specialized','standardized','studied','upgraded','utilized','adapted','advised','clarified','coached','communicated','conducted','coordinated','critiqued','developed','enabled','encouraged','evaluated','explained','facilitated','focused','guided','individualized','informed','instilled','instructed','motivated','persuaded','set','goals','simulated','stimulated','taught','tested','trained','transmitted','tutored','administered','adjusted','allocated','analyzed','appraised','assessed','audited','balanced','calculated','computed','conserved','corrected','determined','developed','estimated','forecasted','managed','marketed','measured','planned','programmed','projected','reconciled','reduced','researched','retrieved','acted','adapted','began','combined','conceptualized','condensed','created','customized','designed','developed','directed','displayed','drew','entertained','established','fashioned','formulated','founded','illustrated','initiated','instituted','integrated','introduced','invented','modeled','modified','originated','performed','photographed','planned','revised','revitalized','shaped','solved','adapted','advocated','aided','answered','arranged','assessed','assisted','cared','for','clarified','coached','collaborated','contributed','cooperated','counseled','demonstrated','diagnosed','educated','encouraged','ensured','expedited','facilitated','familiarize','furthered','guided','helped','insured','intervened','motivated','provided','referred','rehabilitated','presented','resolved','simplified','supplied','supported','volunteered','approved','arranged','cataloged','categorized','charted','classified','coded','collected','compiled','corresponded','distributed','executed','filed','generated','implemented','incorporated','inspected','logged','maintained','monitored','obtained','operated','ordered','organized','prepared','processed','provided','purchased','recorded','registered','reserved','responded','reviewed','routed','scheduled','screened','set','up','submitted','supplied','standardized','systematized','updated','validated','verified','More','verbs','for','Accomplishments','achieved','completed','expanded','exceeded','improved','pioneered','reduced','resolved','restored','spearheaded','succeeded','surpassed','transformed','won']
+	  action_word_list=['project', 'effectively','achieved','delivered','increased','maximizing','secured','developed','enable','serve','business','responsible','conducted','deputized','lead','renewal', 'successful', 'organized', 'leveraged', 'completed', 'advised', 'administered','analyzed','appointed','approved','assigned','attained','authorized','chaired','considered','consolidated','contracted','controlled','converted','coordinated','decided','delegated','developed','directed','eliminated','emphasized','enforced','enhanced','established','executed','generated','handled','headed','hired','hosted','improved','incorporated','increased','initiated','inspected','instituted','led','managed','merged','motivated','organized','originated','overhauled','oversaw','planned','presided','prioritized','produced','recommended','reorganized','replaced','restored','reviewed','scheduled','streamlined','strengthened','supervised','terminated','addressed','advertised','arbitrated','arranged','articulated','authored','clarified','collaborated','communicated','composed','condensed','conferred','consulted','contacted','conveyed','convinced','corresponded','debated','defined','described','developed','directed','discussed','drafted','edited','elicited','enlisted','explained','expressed','formulated','furnished','incorporated','influenced','interacted','interpreted','interviewed','involved','joined','judged','lectured','listened','marketed','mediated','moderated','negotiated','observed','outlined','participated','persuaded','presented','promoted','proposed','publicized','reconciled','recruited','referred','reinforced','reported','resolved','responded','solicited','specified','spoke','suggested','summarized','synthesized','translated','wrote','analyzed','clarified','collected','compared','conducted','critiqued','detected','determined','diagnosed','evaluated','examined','experimented','explored','extracted','formulated','gathered','identified','inspected','interpreted','interviewed','invented','investigated','located','measured','organized','researched','searched','solved','summarized','surveyed','systematized','tested','adapted','assembled','built','calculated','computed','conserved','constructed','converted','debugged','designed','determined','developed','engineered','fabricated','fortified','installed','maintained','operated','overhauled','printed','programmed','rectified','regulated','remodeled','repaired','replaced','restored','solved','specialized','standardized','studied','upgraded','utilized','adapted','advised','clarified','coached','communicated','conducted','coordinated','critiqued','developed','enabled','encouraged','evaluated','explained','facilitated','focused','guided','individualized','informed','instilled','instructed','motivated','persuaded','set','goals','simulated','stimulated','taught','tested','trained','transmitted','tutored','administered','adjusted','allocated','analyzed','appraised','assessed','audited','balanced','calculated','computed','conserved','corrected','determined','developed','estimated','forecasted','managed','marketed','measured','planned','programmed','projected','reconciled','reduced','researched','retrieved','acted','adapted','began','combined','conceptualized','condensed','created','customized','designed','developed','directed','displayed','drew','entertained','established','fashioned','formulated','founded','illustrated','initiated','instituted','integrated','introduced','invented','modeled','modified','originated','performed','photographed','planned','revised','revitalized','shaped','solved','adapted','advocated','aided','answered','arranged','assessed','assisted','cared','for','clarified','coached','collaborated','contributed','cooperated','counseled','demonstrated','diagnosed','educated','encouraged','ensured','expedited','facilitated','familiarize','furthered','guided','helped','insured','intervened','motivated','provided','referred','rehabilitated','presented','resolved','simplified','supplied','supported','volunteered','approved','arranged','cataloged','categorized','charted','classified','coded','collected','compiled','corresponded','distributed','executed','filed','generated','implemented','incorporated','inspected','logged','maintained','monitored','obtained','operated','ordered','organized','prepared','processed','provided','purchased','recorded','registered','reserved','responded','reviewed','routed','scheduled','screened','set','up','submitted','supplied','standardized','systematized','updated','validated','verified','More','verbs','for','Accomplishments','achieved','completed','expanded','exceeded','improved','pioneered','reduced','resolved','restored','spearheaded','succeeded','surpassed','transformed','won']
 
 
 
@@ -398,7 +398,7 @@ class Logic
 
 	  @description_list.each do |description|
 	  	 words_after_bp=get_first_words_after_bullet_points(description)
-	  	 words_amount+= words_after_bp.select{|word| action_word_list.include?(word)}.length.to_i
+	  	 words_amount+= words_after_bp.select{|word| action_word_list.include?(word.try :downcase)}.length.to_i
 	  end
 
 	  ratio=@description_list.length!=0 ? (words_amount/@description_list.length).to_f : nil
@@ -430,6 +430,7 @@ class Logic
 		values=[]
 		specifics_word_list = ['%','\$','USD','SGD','AUD','euro','per day','per week','per month','per year']
 		checking_value="No specific chars was found in description"
+		get_description_list #call method that generate @description_list
 		count_specifics_words(specifics_word_list) #call method that generate @description_specifics_array
 		unless @description_specifics_array.length==0
 			checking_value=@description_specifics_array.inject(:+)/@description_specifics_array.length
@@ -650,6 +651,7 @@ private
 		list=[]
 		@json.each do |k,v|
 			list<<v if k=='description'
+			next if k == 'education'
 			v.each{|a| list<<a["description"]} if v.class==Array
 		end
 
@@ -659,7 +661,7 @@ private
 	def get_first_words_after_bullet_points(description)
 		list=[]
 		description
-		bullet_points=%w{★ ✪ ✯ ✰☛ ☝ ☞ ☟ ⇨ ► ◄ » ■ ♦ ◆ ●✔ ✘ ☐ ☑ ☒ - > <}
+		bullet_points=%w{★ ✪ ✯ ✰☛ ☝ ☞ ☟ ⇨ ► ◄ » ■ ♦ ◆ ●✔ ✘ ☐ ☑ ☒ - > < º}
 		bullet_indexes=description.chars.map.with_index {|char,index| index if bullet_points.include?(char)}.compact
 		bullet_indexes.each do |index|
 			word_after=description.chars[index+1..-1].join[/^\s?\w+/i]
@@ -675,6 +677,7 @@ private
 		@description_list.each do |description|
 			@description_specifics_array<<description.scan(specific_regexp).size
 		end
+		@description_specifics_array
 	end
 
 	def grammar_checking
@@ -697,7 +700,7 @@ private
 	end
 
 	def find_bullet_points(text)
-		bullet_points=%w{★ ✪ ✯ ✰☛ ☝ ☞ ☟ ⇨ ► ◄ » ■ ♦ ◆ ●✔ ✘ ☐ ☑ ☒ - > <}
+		bullet_points=%w{★ ✪ ✯ ✰☛ ☝ ☞ ☟ ⇨ ► ◄ » ■ ♦ ◆ ●✔ ✘ ☐ ☑ ☒ - > < º}
 		text.chars.select{|char| bullet_points.include?(char)}.length
 	end
 
